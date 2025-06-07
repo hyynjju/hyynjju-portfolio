@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>iPhone + Video</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <button class="chevron left">&#10094;</button>
+    <button class="chevron right">&#10095;</button>
+    <!-- 배경 비디오 레이어 -->
+    <div class="background-layer">
+      <video
+        id="background-video"
+        src="/medeasy_demo.mp4"
+        muted
+        autoplay
+        loop
+        playsinline
+      ></video>
+      <div class="overlay"></div>
+    </div>
+
+    <!-- 아이폰 프레임 -->
+    <div class="container">
+      <div class="phone-wrapper">
+        <video
+          id="demo-video"
+          src="/medeasy_demo.mp4"
+          muted
+          autoplay
+          loop
+          playsinline
+        ></video>
+        <img src="/iphone.png" class="phone-frame" />
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
