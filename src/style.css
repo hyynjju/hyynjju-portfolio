@@ -1,3 +1,21 @@
+/* Delight Regular 폰트 정의 */
+@font-face {
+  font-family: 'Delight';
+  src: url('public/fonts/Delight-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Delight SemiBold 폰트 정의 */
+@font-face {
+  font-family: 'Delight';
+  src: url('public/fonts/Delight-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Reset & Base Styles */
 * {
   margin: 0;
@@ -15,51 +33,31 @@ body {
   overflow-x: hidden;
 }
 
-/* Navigation Controls */
+/* Navigation Controls (인트로 섹션 내부 배치로 복원) */
 .nav-btn {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 100;
-  width: 60px;
-  height: 60px;
-  background: rgba(0, 0, 0, 0.3);
   border: none;
-  border-radius: 50%;
   cursor: pointer;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  align-items: end;
+  background: transparent;
 }
 
 .nav-btn:hover {
   background: rgba(0, 0, 0, 0.6);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.nav-btn--left {
-  left: 24px;
-}
-
-.nav-btn--right {
-  right: 24px;
+  transform: scale(1.1); /* 확대 효과만 유지 */
 }
 
 .nav-icon {
   width: 24px;
   height: 24px;
-  filter: invert(1);
-  transition: transform 0.3s ease;
 }
 
 .nav-icon--left {
-  transform: rotate(180deg);
+  transform: rotate(0deg);
 }
 
 .nav-icon--right {
-  transform: rotate(0deg);
+  transform: rotate(180deg);
 }
 
 /* Background Effects */
@@ -95,29 +93,36 @@ body {
 .portfolio {
   min-height: 100vh;
   position: relative;
-  perspective: 1000px;
+  /* perspective: 1000px; -- 헤더 고정 문제 해결을 위해 제거 */
 }
 
 .portfolio__container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 48px;
+  padding: 0 48px; /* 전체 좌우 마진을 48px로 설정 */
+  padding-top: 200px; /* 고정된 헤더 높이만큼 padding 추가 */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Header */
+/* Header (고정 및 색상 반전) */
 .header {
-  padding: 32px 0 0;
-  margin-bottom: 256px;
+  position: fixed; /* 상단에 고정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* 가장 위에 위치 */
+  padding: 32px 48px 0; /* 좌우 padding은 container와 동일하게 유지 */
+  font-family: 'Delight';
+  font-weight: 400;
+  letter-spacing: 0.03em;
 }
 
 .header__nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 256px;
 }
 
 .lang-selector {
@@ -127,10 +132,10 @@ body {
 
 .lang-selector__item {
   font-size: 16px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.3);
+  color: #fff; /* 기본적으로 흰색 */
   cursor: pointer;
   transition: color 0.3s ease;
+  mix-blend-mode: difference; /* 배경색에 따라 텍스트 색상 반전 */
 }
 
 .lang-selector__item--active {
@@ -148,10 +153,10 @@ body {
 
 .social-links__item {
   font-size: 16px;
-  font-weight: 600;
-  color: #fff;
+  color: #fff; /* 기본적으로 흰색 */
   text-decoration: none;
   transition: color 0.3s ease;
+  mix-blend-mode: difference; /* 배경색에 따라 텍스트 색상 반전 */
 }
 
 .social-links__item:hover {
@@ -161,50 +166,103 @@ body {
 .header__logo {
   display: flex;
   justify-content: flex-end;
+  margin-top: 32px; /* 로고와 상단 nav 사이 간격 */
 }
 
 .logo {
   width: 67px;
   height: auto;
+  /* mix-blend-mode: difference; -- 제거: 로고 색상 변경 방지 */
 }
 
-/* Content Section */
+/* Intro Section */
+.intro-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 64px; /* Content 섹션과의 간격 */
+  position: relative;
+  z-index: 60;
+}
+
+.intro-text {
+  flex: 1; /* 남은 공간을 텍스트가 채우도록 */
+  font-size: 36px;
+  line-height: 1.2;
+  margin-right: 20px; /* 텍스트와 버튼 사이 간격 */
+  font-family: 'Delight', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.intro-text p {
+  font-size: 36px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.intro-text p:nth-child(2) {
+  opacity: 0.75;
+}
+
+.intro-text p:last-child {
+  opacity: 0.5;
+}
+
+.intro-text .semi-bold-text {
+  background: linear-gradient(to bottom right, #a5ccff, #8989ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+/* New: Wrapper for in-flow navigation controls (인트로 섹션 내 배치) */
+.intro-nav-controls {
+  display: flex;
+  gap: 16px; /* 두 쉐브론 버튼 사이 간격 */
+  align-items: center;
+}
+
+/* Content Section (벤또 그리드) */
 .content {
-  display: flex;
-  gap: 32px;
-  flex: 1;
-  align-items: flex-start;
+  display: grid; /* 그리드 레이아웃 적용 */
+  /* 'x' 여백을 32px로 가정하고, 각 컬럼 너비를 유동적으로 설정 */
+  /* (메디지 영역 너비) (x 여백) (100/30 영역 너비) (x 여백) (아이폰 스크린샷 영역 너비) */
+  grid-template-columns: minmax(200px, 1.2fr) 24px minmax(180px, 0.8fr) 24px 2fr;
+  /* 'y' 여백을 32px로 가정하고, 두 행을 구성 */
+  grid-template-rows: auto 24px auto; /* 상단 내용, 여백, 하단 내용 */
+  gap: 0; /* 각 셀 사이의 기본 간격은 0으로 설정하고, gap은 x,y로 표현된 곳에 직접 줄 예정 */
+  flex: 1; /* portfolio__container 내에서 남은 세로 공간 채우기 */
+  align-items: stretch; /* 그리드 아이템이 셀 높이를 채우도록 */
 }
 
+/* content__left는 더 이상 flex 컨테이너가 아니라, 그리드 아이템들을 직접 그리드에 배치합니다. */
 .content__left {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  display: contents; /* 자식 요소들이 직접 그리드 아이템이 되도록 */
 }
 
 .content__right {
-  width: 576px;
-  height: 754px;
+  height: 100%; /* 그리드 셀 높이 채우기 */
   position: relative;
+  grid-column: 5 / 6; /* 다섯 번째 컬럼 (가장 오른쪽 큰 부분) */
+  grid-row: 1 / span 3; /* 첫 번째 줄부터 세 번째 줄까지 (전체 높이) */
 }
 
-/* Project Info */
+/* Project Info (메디지, 100/30 박스) */
 .project-info {
-  display: flex;
-  gap: 32px;
-  height: fit-content;
+  display: contents; /* 자식 요소들이 직접 그리드 아이템이 되도록 */
 }
 
 .project-info__main {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
   padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 200px;
+  grid-column: 1 / 2; /* 첫 번째 컬럼 */
+  grid-row: 1 / 2; /* 첫 번째 줄 */
 }
 
 .project-meta__year {
@@ -227,18 +285,20 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 100px;
+  font-family: 'Delight', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.03em;
 }
 
 .external-link {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   text-decoration: none;
   color: rgba(255, 255, 255, 0.7);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 400;
   transition: color 0.3s ease;
+  gap: 4px;
 }
 
 .external-link:hover {
@@ -248,8 +308,6 @@ body {
 .external-link__icon {
   width: 9.5px;
   height: 9.5px;
-  filter: invert(1);
-  opacity: 0.7;
   transition: opacity 0.3s ease;
 }
 
@@ -257,14 +315,15 @@ body {
   opacity: 1;
 }
 
-/* Skills Stats */
+/* Skills Stats (100/30 박스) */
 .skills-stats {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 24px;
-  width: 180px;
   display: flex;
   flex-direction: column;
+  grid-column: 3 / 4; /* 세 번째 컬럼 (두 번째 박스) */
+  grid-row: 1 / 2; /* 첫 번째 줄 */
 }
 
 .skill-item {
@@ -273,10 +332,13 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 16px 0;
+  font-family: 'Delight', sans-serif;
+  letter-spacing: 0.03em;
 }
 
 .skill-item:first-child {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: none;
 }
 
 .skill-item__header {
@@ -301,11 +363,13 @@ body {
   line-height: 1;
 }
 
-/* Project Description */
+/* Project Description (설명 박스) */
 .project-description {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 24px;
+  grid-column: 1 / span 3; /* 첫 번째 컬럼부터 세 번째 컬럼까지 (메디지+100/30 영역 합친 너비) */
+  grid-row: 3 / 4; /* 세 번째 줄 (아래쪽 박스) */
 }
 
 .project-description__text {
@@ -372,16 +436,56 @@ body {
 /* Responsive Design */
 @media screen and (max-width: 1024px) {
   .portfolio__container {
-    padding: 0 24px;
+    padding: 0 48px;
+    padding-top: 100px; /* 태블릿에서도 헤더 높이만큼 패딩 유지 */
+  }
+
+  .header {
+    padding: 32px 48px 0; /* 태블릿에서도 헤더 패딩 유지 */
+  }
+
+  .intro-section {
+    flex-direction: column; /* 태블릿에서 텍스트와 버튼 세로 정렬 */
+    align-items: flex-start;
+    margin-bottom: 80px;
+  }
+
+  .intro-text {
+    margin-right: 0; /* 텍스트와 버튼 그룹이 세로로 분리되므로 우측 마진 제거 */
+    margin-bottom: 20px; /* 텍스트와 버튼 그룹 사이 세로 간격 추가 */
   }
 
   .content {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    gap: 32px;
+  }
+
+  .content__left {
+    display: flex;
     flex-direction: column;
-    gap: 48px;
+    gap: 32px;
+  }
+
+  .project-info {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .project-info__main,
+  .skills-stats,
+  .project-description,
+  .content__right {
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+  }
+
+  .skills-stats {
+    flex-direction: row;
   }
 
   .content__right {
-    width: 100%;
     max-width: 500px;
     height: 650px;
     align-self: center;
@@ -395,18 +499,32 @@ body {
     font-size: 48px;
   }
 
+  /* 헤더 margin-bottom 제거 (fixed 이므로) */
   .header__nav {
-    margin-bottom: 128px;
+    margin-bottom: 0;
   }
 
   .header {
-    margin-bottom: 128px;
+    margin-bottom: 0;
   }
 }
 
 @media screen and (max-width: 768px) {
   .portfolio__container {
-    padding: 0 16px;
+    padding: 0 24px;
+    padding-top: 80px; /* 헤더 높이에 맞춰 조정 */
+  }
+
+  .header {
+    padding: 24px 24px 0; /* 모바일 헤더 패딩 조정 */
+  }
+
+  .intro-text {
+    font-size: 28px;
+  }
+
+  .intro-text p {
+    font-size: 20px;
   }
 
   .project-info {
@@ -428,14 +546,6 @@ body {
     height: 48px;
   }
 
-  .nav-btn--left {
-    left: 16px;
-  }
-
-  .nav-btn--right {
-    right: 16px;
-  }
-
   .nav-icon {
     width: 20px;
     height: 20px;
@@ -451,14 +561,31 @@ body {
 }
 
 @media screen and (max-width: 480px) {
-  .header__nav {
-    flex-direction: column;
-    gap: 24px;
-    margin-bottom: 64px;
+  .portfolio__container {
+    padding: 0 16px;
+    padding-top: 70px; /* 헤더 높이에 맞춰 조정 */
   }
 
   .header {
-    margin-bottom: 64px;
+    padding: 16px 16px 0; /* 모바일 헤더 패딩 조정 */
+  }
+
+  .header__nav {
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 0;
+  }
+
+  .header {
+    margin-bottom: 0;
+  }
+
+  .intro-text {
+    font-size: 24px;
+  }
+
+  .intro-text p {
+    font-size: 18px;
   }
 
   .project-meta__title {
@@ -480,4 +607,17 @@ body {
   .content__right {
     height: 350px;
   }
+}
+
+/* 새로운 원형 블러 효과 */
+.top-circular-blur {
+  position: fixed;
+  width: 150vw;
+  height: 150vh;
+  border-radius: 50%;
+  background-color: rgba(137, 137, 255, 0.4);
+  top: -140vh;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: blur(400px);
 }

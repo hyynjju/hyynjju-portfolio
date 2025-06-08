@@ -3,57 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio - 메디지</title>
+    <title>hyynjju</title>
     <link rel="stylesheet" href="src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"
+    />
   </head>
   <body>
-    <!-- Navigation Controls -->
-    <button class="nav-btn nav-btn--left" id="prevBtn">
-      <img
-        src="icons/chevron.svg"
-        alt="Previous"
-        class="nav-icon nav-icon--left"
-      />
-    </button>
-    <button class="nav-btn nav-btn--right" id="nextBtn">
-      <img
-        src="icons/chevron.svg"
-        alt="Next"
-        class="nav-icon nav-icon--right"
-      />
-    </button>
+    <div class="top-circular-blur"></div>
+    <header class="header">
+      <nav class="header__nav">
+        <div class="lang-selector">
+          <span class="lang-selector__item lang-selector__item--active"
+            >KR</span
+          >
+          <span class="lang-selector__item">JP</span>
+          <span class="lang-selector__item">EN</span>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-links__item">Contact</a>
+          <a href="#" class="social-links__item">Instagram</a>
+          <a href="#" class="social-links__item">Github</a>
+        </div>
+      </nav>
+    </header>
 
-    <!-- Background Blur Effect -->
     <div class="background-blur"></div>
 
-    <!-- Main Container -->
     <main class="portfolio">
       <div class="portfolio__container">
-        <!-- Header Section -->
-        <header class="header">
-          <nav class="header__nav">
-            <div class="lang-selector">
-              <span class="lang-selector__item lang-selector__item--active"
-                >KR</span
-              >
-              <span class="lang-selector__item">JP</span>
-              <span class="lang-selector__item">EN</span>
-            </div>
-            <div class="social-links">
-              <a href="#" class="social-links__item">Contact</a>
-              <a href="#" class="social-links__item">Instagram</a>
-              <a href="#" class="social-links__item">Github</a>
-            </div>
-          </nav>
-          <div class="header__logo">
-            <img src="icons/arrow.svg" alt="Logo" class="logo" />
+        <section class="intro-section">
+          <div class="intro-text">
+            <p>
+              Hyunju Cho 👻 — <span class="semi-bold-text">UX/UI designer</span>
+            </p>
+            <p>and frontend developer based in Korea.</p>
+            <p>Specialize in practical, code-aware design.</p>
           </div>
-        </header>
+          <div class="intro-nav-controls">
+            <button class="nav-btn nav-btn--left" id="prevBtn">
+              <img
+                src="icons/chevron.svg"
+                alt="Previous"
+                class="nav-icon nav-icon--left"
+              />
+            </button>
+            <button class="nav-btn nav-btn--right" id="nextBtn">
+              <img
+                src="icons/chevron.svg"
+                alt="Next"
+                class="nav-icon nav-icon--right"
+              />
+            </button>
+          </div>
+        </section>
 
-        <!-- Content Section -->
         <section class="content">
           <div class="content__left">
-            <!-- Project Info -->
             <article class="project-info">
               <div class="project-info__main">
                 <div class="project-meta">
@@ -88,7 +95,6 @@
                 </div>
               </div>
 
-              <!-- Skills Stats -->
               <div class="skills-stats">
                 <div class="skill-item">
                   <div class="skill-item__header">
@@ -105,7 +111,6 @@
               </div>
             </article>
 
-            <!-- Project Description -->
             <article class="project-description">
               <p class="project-description__text">
                 고령자나 시각 장애인을 포함한 디지털 소외 계층도 쉽게 사용할 수
@@ -127,7 +132,6 @@
             </article>
           </div>
 
-          <!-- Phone Showcase -->
           <div class="content__right">
             <div class="phone-showcase">
               <div class="phone-container" id="phoneContainer">
@@ -147,7 +151,6 @@
         </section>
       </div>
 
-      <!-- Background Glow Effect -->
       <div class="glow-effect"></div>
     </main>
 
