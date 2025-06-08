@@ -1,45 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <title>iPhone + Video</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
-    <link rel="stylesheet" href="/src/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - 메디지</title>
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <button class="chevron left">&#10094;</button>
-    <button class="chevron right">&#10095;</button>
-    <!-- 배경 비디오 레이어 -->
-    <div class="background-layer">
-      <video
-        id="background-video"
-        src="/medeasy_demo.mp4"
-        muted
-        autoplay
-        loop
-        playsinline
-      ></video>
-      <div class="overlay"></div>
-    </div>
+    <!-- Navigation Controls -->
+    <button class="nav-btn nav-btn--left" id="prevBtn">
+      <img
+        src="icons/chevron.svg"
+        alt="Previous"
+        class="nav-icon nav-icon--left"
+      />
+    </button>
+    <button class="nav-btn nav-btn--right" id="nextBtn">
+      <img
+        src="icons/chevron.svg"
+        alt="Next"
+        class="nav-icon nav-icon--right"
+      />
+    </button>
 
-    <!-- 아이폰 프레임 -->
-    <div class="container">
-      <div class="phone-wrapper">
-        <video
-          id="demo-video"
-          src="/medeasy_demo.mp4"
-          muted
-          autoplay
-          loop
-          playsinline
-        ></video>
-        <img src="/iphone.png" class="phone-frame" />
+    <!-- Background Blur Effect -->
+    <div class="background-blur"></div>
+
+    <!-- Main Container -->
+    <main class="portfolio">
+      <div class="portfolio__container">
+        <!-- Header Section -->
+        <header class="header">
+          <nav class="header__nav">
+            <div class="lang-selector">
+              <span class="lang-selector__item lang-selector__item--active"
+                >KR</span
+              >
+              <span class="lang-selector__item">JP</span>
+              <span class="lang-selector__item">EN</span>
+            </div>
+            <div class="social-links">
+              <a href="#" class="social-links__item">Contact</a>
+              <a href="#" class="social-links__item">Instagram</a>
+              <a href="#" class="social-links__item">Github</a>
+            </div>
+          </nav>
+          <div class="header__logo">
+            <img src="icons/arrow.svg" alt="Logo" class="logo" />
+          </div>
+        </header>
+
+        <!-- Content Section -->
+        <section class="content">
+          <div class="content__left">
+            <!-- Project Info -->
+            <article class="project-info">
+              <div class="project-info__main">
+                <div class="project-meta">
+                  <span class="project-meta__year">2025</span>
+                  <h1 class="project-meta__title">메디지</h1>
+                </div>
+                <div class="external-links">
+                  <a href="#" class="external-link">
+                    <span class="external-link__text">Instagram</span>
+                    <img
+                      src="icons/arrow.svg"
+                      alt="External link"
+                      class="external-link__icon"
+                    />
+                  </a>
+                  <a href="#" class="external-link">
+                    <span class="external-link__text">HP</span>
+                    <img
+                      src="icons/arrow.svg"
+                      alt="External link"
+                      class="external-link__icon"
+                    />
+                  </a>
+                  <a href="#" class="external-link">
+                    <span class="external-link__text">GitHub</span>
+                    <img
+                      src="icons/arrow.svg"
+                      alt="External link"
+                      class="external-link__icon"
+                    />
+                  </a>
+                </div>
+              </div>
+
+              <!-- Skills Stats -->
+              <div class="skills-stats">
+                <div class="skill-item">
+                  <div class="skill-item__header">
+                    <span class="skill-item__label">UX/UI Design</span>
+                    <span class="skill-item__percentage">100%</span>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item__header">
+                    <span class="skill-item__label">Frontend</span>
+                    <span class="skill-item__percentage">30%</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project Description -->
+            <article class="project-description">
+              <p class="project-description__text">
+                고령자나 시각 장애인을 포함한 디지털 소외 계층도 쉽게 사용할 수
+                있는 복약 관리 앱의 UI/UX 설계 및 프론트엔드 개발을
+                담당했습니다.<br /><br />기존 복약 앱은 복잡한 조작으로 인해
+                사용자 이탈과 복약 누락, 중복 복용 등의 문제가 있었습니다. 이를
+                해결하기 위해 사용자가 직접 조작하지 않아도 자동으로 복약이
+                기록되는 UX를 설계하고, 음성 입력과 NFC 태그 기반의 비접촉
+                기능을 직접 구현했습니다.<br /><br />또한, 95% 이상의 정확도를
+                가진 알약 이미지 인식 기능을 통해 약 이름이나 패키지를 식별하기
+                어려운 사용자도 쉽게 의약품 정보를 확인할 수 있도록
+                구성했습니다.<br /><br />기술적으로는 React Native를 활용해
+                음성, 이미지, NFC 기반 로직을 포함한 UI 인터랙션을 직접
+                구현하고, 재사용성과 유지보수성을 고려한 컴포넌트 구조로 개발에
+                기여했습니다.<br /><br />이 경험을 통해 누구도 소외되지 않는
+                사용자 경험을 고민하게 되었으며, 앞으로도 사회적 가치를 만드는
+                프로덕트를 만들고 싶습니다.
+              </p>
+            </article>
+          </div>
+
+          <!-- Phone Showcase -->
+          <div class="content__right">
+            <div class="phone-showcase">
+              <div class="phone-container" id="phoneContainer">
+                <video
+                  id="demoVideo"
+                  class="phone-video"
+                  src="medeasy_demo.mp4"
+                  muted
+                  autoplay
+                  loop
+                  playsinline
+                ></video>
+                <img src="iphone.png" alt="iPhone Frame" class="phone-frame" />
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-    </div>
 
-    <script type="module" src="/src/main.js"></script>
+      <!-- Background Glow Effect -->
+      <div class="glow-effect"></div>
+    </main>
+
+    <script src="main.js"></script>
   </body>
 </html>

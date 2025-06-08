@@ -1,83 +1,115 @@
-const wrapper = document.querySelector('.phone-wrapper');
-const demoVideo = document.getElementById('demo-video');
-const backgroundVideo = document.getElementById('background-video');
-const leftBtn = document.querySelector('.chevron.left');
-const rightBtn = document.querySelector('.chevron.right');
+// main.js - 메인 초기화 및 전역 제어
+import { setupVideoManager } from './videoManager.js';
+import { setupInteractionHandlers } from './interactionHandlers.js';
 
-const videoSources = ['/medeasy_demo.mp4', '/chack_demo.mp4'];
-let currentIndex = 0;
+// DOM Elements
+const phoneContainer = document.getElementById('phoneContainer');
+const demoVideo = document.getElementById('demoVideo');
 
-// 회전 로직
+// 3D Rotation Logic
 const targetRotation = { x: 0, y: 0 };
 let currentRotation = { x: 0, y: 0 };
 
-document.addEventListener('mousemove', (e) => {
+// Mouse movement handler
+function handleMouseMove(e) {
   const x = (e.clientX / window.innerWidth - 0.5) * 2;
   const y = (e.clientY / window.innerHeight - 0.5) * 2;
-  targetRotation.y = x * 10;
-  targetRotation.x = -y * 10;
-});
 
-document.addEventListener('touchmove', (e) => {
+  targetRotation.y = x * 15; // Increased rotation intensity
+  targetRotation.x = -y * 15;
+}
+
+// Touch movement handler
+function handleTouchMove(e) {
   if (e.touches.length > 0) {
-    const t = e.touches[0];
-    const x = (t.clientX / window.innerWidth - 0.5) * 2;
-    const y = (t.clientY / window.innerHeight - 0.5) * 2;
-    targetRotation.y = x * 10;
-    targetRotation.x = -y * 10;
-  }
-});
+    const touch = e.touches[0];
+    const x = (touch.clientX / window.innerWidth - 0.5) * 2;
+    const y = (touch.clientY / window.innerHeight - 0.5) * 2;
 
+    targetRotation.y = x * 15;
+    targetRotation.x = -y * 15;
+  }
+}
+
+// Animation loop for smooth rotation
 function animate() {
   requestAnimationFrame(animate);
-  currentRotation.x += (targetRotation.x - currentRotation.x) * 0.08;
-  currentRotation.y += (targetRotation.y - currentRotation.y) * 0.08;
-  wrapper.style.transform = `
-    rotateX(${currentRotation.x}deg)
-    rotateY(${currentRotation.y}deg)
-  `;
-}
-animate();
 
-// 🔁 영상 전환 함수
-function switchVideo(index) {
-  // 페이드 아웃
-  demoVideo.classList.add('fade-out');
-  backgroundVideo.classList.add('fade-out');
+  // Smooth interpolation
+  const lerp = 0.08;
+  currentRotation.x += (targetRotation.x - currentRotation.x) * lerp;
+  currentRotation.y += (targetRotation.y - currentRotation.y) * lerp;
 
-  // 잠깐 기다렸다가 변경
-  setTimeout(() => {
-    demoVideo.src = videoSources[index];
-    backgroundVideo.src = videoSources[index];
-
-    demoVideo.load();
-    backgroundVideo.load();
-
-    demoVideo.play();
-    backgroundVideo.play();
-
-    // 페이드 인
-    demoVideo.classList.remove('fade-out');
-    demoVideo.classList.add('fade-in');
-
-    backgroundVideo.classList.remove('fade-out');
-    backgroundVideo.classList.add('fade-in');
-
-    // 다시 초기화
-    setTimeout(() => {
-      demoVideo.classList.remove('fade-in');
-      backgroundVideo.classList.remove('fade-in');
-    }, 600);
-  }, 300);
+  // Apply transform
+  if (phoneContainer) {
+    phoneContainer.style.transform = `
+      rotateX(${currentRotation.x}deg)
+      rotateY(${currentRotation.y}deg)
+    `;
+  }
 }
 
-// 버튼 이벤트
-leftBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + videoSources.length) % videoSources.length;
-  switchVideo(currentIndex);
-});
+// Intersection Observer for performance optimization
+function setupIntersectionObserver() {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Phone is visible, enable mouse tracking
+          document.addEventListener('mousemove', handleMouseMove);
+          document.addEventListener('touchmove', handleTouchMove, {
+            passive: true,
+          });
+        } else {
+          // Phone is not visible, disable mouse tracking for performance
+          document.removeEventListener('mousemove', handleMouseMove);
+          document.removeEventListener('touchmove', handleTouchMove);
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+    }
+  );
 
-rightBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % videoSources.length;
-  switchVideo(currentIndex);
-});
+  if (phoneContainer) {
+    observer.observe(phoneContainer);
+  }
+}
+
+// Initialize everything when DOM is loaded
+function init() {
+  console.log('Portfolio initialized');
+
+  // Start animation loop
+  animate();
+
+  // Setup all managers
+  setupIntersectionObserver();
+  setupVideoManager();
+  setupInteractionHandlers();
+
+  // Handle page visibility changes for performance
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      // Page is hidden, pause video to save resources
+      if (demoVideo && !demoVideo.paused) {
+        demoVideo.pause();
+      }
+    } else {
+      // Page is visible, resume video
+      if (demoVideo && demoVideo.paused) {
+        demoVideo.play().catch((e) => {
+          console.warn('Video resume failed:', e);
+        });
+      }
+    }
+  });
+}
+
+// Wait for DOM to be fully loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
