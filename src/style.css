@@ -33,6 +33,26 @@ body {
   overflow-x: hidden;
 }
 
+.intro-nav-controls {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  background-image: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 70%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  padding: 12px;
+  border-radius: 32px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
 /* Navigation Controls (인트로 섹션 내부 배치로 복원) */
 .nav-btn {
   border: none;
@@ -42,9 +62,20 @@ body {
   background: transparent;
 }
 
-.nav-btn:hover {
-  background: rgba(0, 0, 0, 0.6);
-  transform: scale(1.1); /* 확대 효과만 유지 */
+.nav-btn--left {
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-btn--left:hover {
+  transform: translateX(-5px);
+}
+
+.nav-btn--right {
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-btn--right:hover {
+  transform: translateX(5px);
 }
 
 .nav-icon {
@@ -97,7 +128,6 @@ body {
 }
 
 .portfolio__container {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 0 48px; /* 전체 좌우 마진을 48px로 설정 */
   padding-top: 200px; /* 고정된 헤더 높이만큼 padding 추가 */
@@ -215,13 +245,6 @@ body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
-}
-
-/* New: Wrapper for in-flow navigation controls (인트로 섹션 내 배치) */
-.intro-nav-controls {
-  display: flex;
-  gap: 16px; /* 두 쉐브론 버튼 사이 간격 */
-  align-items: center;
 }
 
 /* Content Section (벤또 그리드) */
