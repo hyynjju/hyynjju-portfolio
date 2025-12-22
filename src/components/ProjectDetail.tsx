@@ -22,7 +22,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
       <div className="max-w-screen-xl mx-auto px-6 py-24">
         <button
           onClick={handleClose}
-          className="fixed top-12 right-12 glass w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-transform z-[110]"
+          className="fixed top-4 right-4 md:top-12 md:right-12 glass w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-transform z-[110]"
         >
           <svg
             width="20"
@@ -65,26 +65,26 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div className="lg:col-span-4 space-y-12">
               <div className="space-y-4">
-                <h4 className="mono text-[10px] text-zinc-600 uppercase tracking-widest font-bold">
+                <h4 className="mono text-xs text-zinc-600 uppercase tracking-widest font-bold">
                   Protocol Status
                 </h4>
                 <p className="text-zinc-300">Deployed_V.1.0</p>
               </div>
               <div className="space-y-4">
-                <h4 className="mono text-[10px] text-zinc-600 uppercase tracking-widest font-bold">
+                <h4 className="mono text-xs text-zinc-600 uppercase tracking-widest font-bold">
                   Timeline
                 </h4>
                 <p className="text-zinc-300">Q3 2024 — PRESENT</p>
               </div>
               <div className="space-y-4">
-                <h4 className="mono text-[10px] text-zinc-600 uppercase tracking-widest font-bold">
+                <h4 className="mono text-xs text-zinc-600 uppercase tracking-widest font-bold">
                   Logic Stack
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 border border-zinc-800 rounded-full text-[10px] mono text-zinc-500 uppercase"
+                      className="px-3 py-1 border border-zinc-800 rounded-full text-xs mono text-zinc-500 uppercase"
                     >
                       {tag}
                     </span>
