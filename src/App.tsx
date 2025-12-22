@@ -3,7 +3,7 @@ import Navigation from './components/Navigation';
 import InteractiveAsciiSphere from './components/InteractiveAsciiSphere';
 import ProjectDetail from './components/ProjectDetail';
 import { Section, Project } from './types';
-import { DESIGNER_NAME } from './constants';
+import { DESIGNER_NAME, DESIGNER_ROLE, DESIGNER_EMAIL } from './constants';
 import { PROJECTS } from './data/projects';
 
 const App: React.FC = () => {
@@ -159,8 +159,8 @@ const App: React.FC = () => {
 
           <div className="mt-20 flex flex-col md:flex-row items-center gap-12 scroll-reveal visible pointer-events-auto">
             <div className="text-center md:text-right space-y-1">
-              <p className="text-zinc-500 text-[9px] mono uppercase tracking-widest leading-none">
-                Senior UXUI Designer & Engineer
+              <p className="text-zinc-300 text-[9px] mono uppercase tracking-widest leading-none">
+                {DESIGNER_ROLE}
               </p>
               <p className="text-white text-[10px] mono uppercase tracking-[0.4em] pt-1">
                 SEOUL, KR
@@ -173,9 +173,9 @@ const App: React.FC = () => {
               onClick={() =>
                 triggerTransition(() => scrollTo(Section.PROJECTS))
               }
-              className="btn-monotone px-14 py-6 rounded-full font-bold text-[10px] mono tracking-[0.5em] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10"
+              className="btn-monotone px-14 py-6 rounded-full font-bold text-[11px] mono tracking-[0.5em]"
             >
-              LAUNCH_SYSTEM
+              VIEW PORTFOLIO
             </button>
           </div>
         </div>
@@ -249,20 +249,33 @@ const App: React.FC = () => {
       {/* FOOTER */}
       <footer className="py-48 px-8 border-t border-zinc-900 bg-zinc-950/20">
         <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-20">
-          <div className="serif text-6xl md:text-8xl text-white tracking-tighter italic opacity-80">
-            {DESIGNER_NAME}
-          </div>
+          <a
+            href={`mailto:${DESIGNER_EMAIL}`}
+            className="serif text-6xl md:text-6xl text-white tracking-tighter italic opacity-80 hover:opacity-100 transition-opacity"
+          >
+            {DESIGNER_EMAIL}
+          </a>
           <div className="flex flex-col md:flex-row gap-10 md:gap-20 items-center">
-            <div className="flex gap-14 text-[10px] mono uppercase tracking-[0.5em] text-zinc-600">
+            <div className="flex gap-6 text-[10px] mono uppercase tracking-[0.5em] text-zinc-600">
               <a
-                href="#"
-                className="hover:text-white transition-all hover:tracking-[0.7em]"
+                href="https://github.com/hyynjju"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-4 hover:text-white transition-all hover:tracking-[0.7em]"
               >
-                LinkedIn
+                GitHub
               </a>
               <a
-                href="#"
-                className="hover:text-white transition-all hover:tracking-[0.7em]"
+                href="https://instagram.com/hyynjju"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-4 hover:text-white transition-all hover:tracking-[0.7em]"
+              >
+                Instagram
+              </a>
+              <a
+                href={`mailto:${DESIGNER_EMAIL}`}
+                className="px-6 py-4 hover:text-white transition-all hover:tracking-[0.7em]"
               >
                 Email
               </a>
@@ -270,7 +283,12 @@ const App: React.FC = () => {
             <div className="mono text-[9px] text-zinc-800 tracking-[0.4em] uppercase font-bold text-center md:text-right leading-loose">
               2025 &copy; SYSTEM DESIGN LAB
               <br />
-              SYNTHESIZED GLOBALLY
+              <a
+                href={`mailto:${DESIGNER_EMAIL}`}
+                className="hover:text-white transition-colors normal-case tracking-normal"
+              >
+                {DESIGNER_EMAIL}
+              </a>
             </div>
           </div>
         </div>

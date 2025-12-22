@@ -85,7 +85,7 @@ const InteractiveAsciiSphere: React.FC = () => {
     <div
       ref={containerRef}
       className="mono text-[8px] md:text-[10px] lg:text-[12px] leading-[0.7] tracking-[0.1em] text-white pointer-events-none select-none whitespace-pre overflow-hidden flex items-center justify-center w-full h-full scale-[1.5] md:scale-[2.0]"
-      style={{ opacity: 0.3 }}
+      style={{ opacity: 0.5 }}
     />
   );
 };
