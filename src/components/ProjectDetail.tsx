@@ -43,7 +43,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }) => {
           </header>
 
           {/* Visual Thumbnail */}
-          <div className="aspect-video glass rounded-[3rem] overflow-hidden border border-zinc-900">
+          <div className="aspect-video glass rounded-[1rem] overflow-hidden border border-zinc-900">
             <img
               src={project.thumbnail}
               alt={`${project.title} thumbnail`}

@@ -67,7 +67,7 @@ const ProjectsSection = ({
                 !isTouchDevice ? 'cursor-none' : ''
               } space-y-12 ${index % 2 === 1 ? 'md:mt-40' : ''}`}
             >
-              <div className="aspect-video glass rounded-[2.5rem] overflow-hidden relative">
+              <div className="aspect-video glass rounded-[1rem] overflow-hidden relative">
                 <img
                   src={project.thumbnail}
                   alt={project.title}
