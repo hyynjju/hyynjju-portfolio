@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
 import Navigation from './components/Navigation';
-import InteractiveAsciiSphere from './components/InteractiveAsciiSphere';
 import ProjectDetail from './components/ProjectDetail';
+import HeroSection from './sections/HeroSection';
+import ProjectsSection from './sections/ProjectsSection';
+import FooterSection from './sections/FooterSection';
 import { Section, Project } from './types';
-import { DESIGNER_NAME, DESIGNER_ROLE, DESIGNER_EMAIL } from './constants';
 import { PROJECTS } from './data/projects';
 
 const App: React.FC = () => {
@@ -20,14 +20,6 @@ const App: React.FC = () => {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
-
-  useEffect(() => {
-    if (hoveredProject) {
-      document.body.classList.add('project-hovering');
-    } else {
-      document.body.classList.remove('project-hovering');
-    }
-  }, [hoveredProject]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,22 +43,6 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document
-      .querySelectorAll('.scroll-reveal')
-      .forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [selectedProject]);
-
   const triggerTransition = useCallback((callback: () => void) => {
     const overlay = document.getElementById('transition-overlay');
     if (overlay) {
@@ -89,73 +65,20 @@ const App: React.FC = () => {
     });
   };
 
-  const scrollTo = (sectionId: Section) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop,
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  const charVariants = {
-    hidden: { filter: 'blur(12px)', opacity: 0, y: 8 },
-    visible: {
-      filter: 'blur(0px)',
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8, // 메인 텍스트 등장 속도
-        ease: [0.215, 0.61, 0.355, 1.0],
-      },
-    },
-  };
-
-  const splitTextToChars = (text: string, className?: string) => {
-    return text.split('').map((char, i) => (
-      <motion.span
-        key={i}
-        variants={charVariants}
-        className={className}
-        style={{ display: 'inline-block' }}
-      >
-        {char === ' ' ? '\u00A0' : char}
-      </motion.span>
-    ));
-  };
-
-  const heroContainerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1, // 메인 텍스트 전 등장 지연
-      },
-    },
-  };
-
-  const lineVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.03, // 각 글자 등장 지연
-      },
-    },
-  };
-
-  const simpleBlurVariants = {
-    hidden: { filter: 'blur(10px)', opacity: 0, y: 15 },
-    visible: {
-      filter: 'blur(0px)',
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.1 }, // 상단 글자 등장 지연
-    },
-  };
-
   return (
     <div className="min-h-screen selection:bg-white selection:text-black relative">
-      <Navigation activeSection={activeSection} onNavigate={scrollTo} />
+      <Navigation
+        activeSection={activeSection}
+        onNavigate={(sectionId) => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            window.scrollTo({
+              top: element.offsetTop,
+              behavior: 'smooth',
+            });
+          }
+        }}
+      />
 
       {hoveredProject && (
         <div
@@ -179,216 +102,25 @@ const App: React.FC = () => {
         />
       )}
 
-      {/* HERO SECTION */}
-      <section
-        id={Section.HERO}
-        className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden"
-      >
-        <div className="hero-gradient"></div>
+      <HeroSection
+        onCTAClick={() => {
+          const element = document.getElementById(Section.PROJECTS);
+          if (element) {
+            window.scrollTo({
+              top: element.offsetTop,
+              behavior: 'smooth',
+            });
+          }
+        }}
+      />
 
-        <div className="absolute inset-0 z-0 flex items-center justify-center opacity-30">
-          <InteractiveAsciiSphere />
-        </div>
+      <ProjectsSection
+        projects={PROJECTS}
+        onSelect={handleProjectSelect}
+        onHover={setHoveredProject}
+      />
 
-        <motion.div
-          className="relative z-10 w-full max-w-screen-2xl px-8 flex flex-col items-center text-center space-y-16"
-          variants={heroContainerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="space-y-6">
-            <motion.div
-              variants={simpleBlurVariants}
-              className="flex items-center gap-3 justify-center"
-            >
-              <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
-              <p className="text-[11px] mono uppercase tracking-[0.6em] text-zinc-400">
-                {DESIGNER_NAME} // 2025 PROTOCOL
-              </p>
-            </motion.div>
-
-            <motion.h1
-              variants={{
-                hidden: {},
-                visible: {
-                  transition: {
-                    staggerChildren: 0.4,
-                    delayChildren: 0.2, // 메인 텍스트 등장 지연
-                  },
-                },
-              }}
-              className="serif text-[10vw] md:text-[8vw] lg:text-[7vw] text-white leading-[0.85] tracking-tighter italic"
-            >
-              <motion.span
-                variants={lineVariants}
-                style={{ display: 'block', whiteSpace: 'nowrap' }}
-              >
-                {splitTextToChars('Bridging the Ideal')}
-              </motion.span>
-
-              <motion.span
-                variants={lineVariants}
-                style={{
-                  display: 'block',
-                  marginTop: '0.5rem',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                {splitTextToChars(
-                  'and the',
-                  'text-zinc-500 font-light opacity-60'
-                )}{' '}
-                {splitTextToChars('Real')}
-              </motion.span>
-            </motion.h1>
-          </div>
-
-          <motion.div
-            variants={{
-              hidden: { filter: 'blur(10px)', opacity: 0, y: 15 },
-              visible: {
-                filter: 'blur(0px)',
-                opacity: 1,
-                y: 0,
-                transition: {
-                  duration: 1,
-                  ease: [0.16, 1, 0.3, 1],
-                  when: 'afterChildren',
-                  delay: 1.15,
-                },
-              },
-            }}
-            className="flex flex-col md:flex-row items-center gap-12 pointer-events-auto"
-          >
-            <div className="text-center md:text-right space-y-1">
-              <p className="text-zinc-300 text-[9px] mono uppercase tracking-widest leading-none">
-                {DESIGNER_ROLE}
-              </p>
-              <p className="text-white text-[10px] mono uppercase tracking-[0.4em] pt-1">
-                SEOUL, KR
-              </p>
-            </div>
-
-            <button
-              onClick={() =>
-                triggerTransition(() => scrollTo(Section.PROJECTS))
-              }
-              className="btn-monotone px-14 py-6 rounded-full font-bold text-[11px] mono tracking-[0.5em]"
-            >
-              VIEW PORTFOLIO
-            </button>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* PROJECTS SECTION */}
-      <section
-        id={Section.PROJECTS}
-        className="py-60 px-8 md:px-12 bg-[#040809]"
-      >
-        <div className="max-w-screen-2xl mx-auto space-y-48">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-10 scroll-reveal">
-            <div className="space-y-8">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-px bg-zinc-800"></div>
-                <span className="mono text-[11px] text-zinc-600 tracking-[0.7em] uppercase">
-                  Archive Index
-                </span>
-              </div>
-              <h2 className="serif text-7xl md:text-9xl text-white font-light italic tracking-tighter">
-                The Artifacts
-              </h2>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-64">
-            {PROJECTS.map((project: Project, index) => (
-              <div
-                key={project.id}
-                onClick={() => handleProjectSelect(project)}
-                onMouseEnter={() => setHoveredProject(project)}
-                onMouseLeave={() => setHoveredProject(null)}
-                className={`group cursor-none space-y-12 scroll-reveal ${
-                  index % 2 === 1 ? 'md:mt-40' : ''
-                }`}
-              >
-                <div className="aspect-video glass rounded-[2.5rem] overflow-hidden relative transition-all duration-700 group-hover:bg-white/5 border-zinc-900 group-hover:border-zinc-700">
-                  <img
-                    src={project.thumbnail}
-                    alt={project.title}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute top-10 right-10 mono text-[10px] text-zinc-700 group-hover:text-zinc-400 transition-colors tracking-[0.3em]">
-                    STP_{project.id}
-                  </div>
-                </div>
-                <div className="space-y-6 px-4">
-                  <div className="flex items-center gap-6">
-                    <span className="text-[10px] mono text-zinc-700 uppercase tracking-[0.5em] font-bold">
-                      {project.category}
-                    </span>
-                    <div className="flex-1 h-px bg-zinc-900"></div>
-                  </div>
-                  <h3 className="serif text-5xl md:text-6xl text-white italic transition-transform group-hover:translate-x-3 duration-700 tracking-tight">
-                    {project.title}
-                  </h3>
-                  <p className="text-zinc-500 text-xl font-light leading-relaxed max-w-lg italic serif">
-                    {project.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="py-48 px-8 border-t border-zinc-900 bg-zinc-950/20">
-        <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-20">
-          <a
-            href={`mailto:${DESIGNER_EMAIL}`}
-            className="serif text-6xl md:text-6xl text-white tracking-tighter italic opacity-80 hover:opacity-100 transition-opacity"
-          >
-            {DESIGNER_EMAIL}
-          </a>
-          <div className="flex flex-col md:flex-row gap-10 md:gap-20 items-center">
-            <div className="flex gap-6 text-[10px] mono uppercase tracking-[0.5em] text-zinc-600">
-              <a
-                href="https://github.com/hyynjju"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-4 hover:text-white transition-all hover:tracking-[0.7em]"
-              >
-                GitHub
-              </a>
-              <a
-                href="https://instagram.com/hyynjju"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-4 hover:text-white transition-all hover:tracking-[0.7em]"
-              >
-                Instagram
-              </a>
-              <a
-                href={`mailto:${DESIGNER_EMAIL}`}
-                className="px-6 py-4 hover:text-white transition-all hover:tracking-[0.7em]"
-              >
-                Email
-              </a>
-            </div>
-            <div className="mono text-[9px] text-zinc-800 tracking-[0.4em] uppercase font-bold text-center md:text-right leading-loose">
-              2025 &copy; SYSTEM DESIGN LAB
-              <br />
-              <a
-                href={`mailto:${DESIGNER_EMAIL}`}
-                className="hover:text-white transition-colors normal-case tracking-normal"
-              >
-                {DESIGNER_EMAIL}
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <FooterSection />
     </div>
   );
 };
