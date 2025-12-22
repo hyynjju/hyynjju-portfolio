@@ -3,7 +3,8 @@ import Navigation from './components/Navigation';
 import InteractiveAsciiSphere from './components/InteractiveAsciiSphere';
 import ProjectDetail from './components/ProjectDetail';
 import { Section, Project } from './types';
-import { PROJECTS, DESIGNER_NAME } from './constants';
+import { DESIGNER_NAME } from './constants';
+import { PROJECTS } from './data/projects';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<Section>(Section.HERO);
@@ -102,21 +103,17 @@ const App: React.FC = () => {
     <div className="min-h-screen selection:bg-white selection:text-black relative">
       <Navigation activeSection={activeSection} onNavigate={scrollTo} />
 
-      {/* Floating Project Cursor Preview - Replaces normal cursor */}
       {hoveredProject && (
         <div
-          className="fixed pointer-events-none z-[11000] mono text-[5px] leading-tight whitespace-pre p-5 glass rounded-2xl text-white transform -translate-x-1/2 -translate-y-1/2 animate-fade-in shadow-2xl backdrop-blur-xl border border-white/20"
+          className="fixed pointer-events-none z-[11000] transform -translate-x-1/2 -translate-y-1/2"
           style={{ left: mousePos.x, top: mousePos.y }}
         >
-          <div className="mb-3 text-[10px] tracking-widest text-zinc-300 uppercase border-b border-white/10 pb-2 flex justify-between items-center">
-            <span>PREVIEW_{hoveredProject.id}</span>
-            <span className="opacity-40">{hoveredProject.category}</span>
-          </div>
-          <div className="opacity-80 scale-125 origin-center p-2">
-            {hoveredProject.asciiArt}
-          </div>
-          <div className="mt-3 text-[9px] mono text-center opacity-50 tracking-[0.3em]">
-            CLICK_TO_INITIALIZE
+          <div className="w-40 h-40 glass rounded-[32px] overflow-hidden shadow-2xl border border-white/20">
+            <img
+              src={hoveredProject.icon}
+              alt={`${hoveredProject.title} app icon`}
+              className="w-full h-full object-cover bg-black"
+            />
           </div>
         </div>
       )}
@@ -219,10 +216,12 @@ const App: React.FC = () => {
                   index % 2 === 1 ? 'md:mt-40' : ''
                 }`}
               >
-                <div className="aspect-[16/10] glass rounded-[2.5rem] overflow-hidden relative flex items-center justify-center p-16 transition-all duration-700 group-hover:bg-white/5 border-zinc-900 group-hover:border-zinc-700">
-                  <div className="project-ascii mono text-[7px] text-zinc-800 transition-all duration-700 select-none whitespace-pre scale-[2] group-hover:text-white group-hover:scale-[2.4]">
-                    {project.asciiArt}
-                  </div>
+                <div className="aspect-video glass rounded-[2.5rem] overflow-hidden relative transition-all duration-700 group-hover:bg-white/5 border-zinc-900 group-hover:border-zinc-700">
+                  <img
+                    src={project.thumbnail}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
                   <div className="absolute top-10 right-10 mono text-[10px] text-zinc-700 group-hover:text-zinc-400 transition-colors tracking-[0.3em]">
                     STP_{project.id}
                   </div>

@@ -42,11 +42,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }) => {
             </p>
           </header>
 
-          {/* Visual Placeholder */}
-          <div className="aspect-[21/9] glass rounded-[3rem] flex items-center justify-center relative overflow-hidden group border border-zinc-900">
-            <pre className="mono text-[10px] md:text-sm text-zinc-700 group-hover:text-zinc-300 transition-colors duration-1000 select-none whitespace-pre scale-[2] md:scale-[3]">
-              {project.asciiArt}
-            </pre>
+          {/* Visual Thumbnail */}
+          <div className="aspect-video glass rounded-[3rem] overflow-hidden border border-zinc-900">
+            <img
+              src={project.thumbnail}
+              alt={`${project.title} thumbnail`}
+              className="w-full h-full object-cover"
+            />
           </div>
 
           {/* Content Grid */}
