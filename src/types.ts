@@ -1,15 +1,17 @@
-
 export interface Project {
   id: string;
   title: string;
   category: string;
+
   description: string;
   longDescription: string;
-  asciiArt: string;
-  tags: string[];
-  link: string;
   process: string;
   outcome: string;
+
+  tags: string[];
+  icon: string;
+  thumbnail: string;
+  pdfUrl: string;
 }
 
 export interface Message {
