@@ -126,6 +126,11 @@
         pointer-events: all;
       }
 
+      /* Fix X (Twitter) in-app browser viewport bug */
+      body.in-app-browser .screen-transition {
+        display: none !important;
+      }
+
       .scroll-reveal {
         opacity: 0;
         transform: translateY(30px);
