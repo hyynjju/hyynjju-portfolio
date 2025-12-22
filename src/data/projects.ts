@@ -3,6 +3,7 @@ import { Project } from '../types';
 export const PROJECTS: Project[] = [
   {
     id: '01',
+    slug: 'medeasy',
     title: 'MedEasy',
     category: 'Healthcare UX',
     description:
@@ -30,6 +31,7 @@ export const PROJECTS: Project[] = [
 
   {
     id: '02',
+    slug: 'yakk',
     title: 'Yakk',
     category: 'Language Learning',
     description:
@@ -56,6 +58,7 @@ export const PROJECTS: Project[] = [
 
   {
     id: '03',
+    slug: 'mekki',
     title: 'MEKKI',
     category: 'Service Design',
     description:
@@ -75,6 +78,7 @@ export const PROJECTS: Project[] = [
 
   {
     id: '04',
+    slug: 'poom',
     title: 'Poom',
     category: 'Community Platform',
     description:

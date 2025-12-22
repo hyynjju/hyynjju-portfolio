@@ -3,15 +3,18 @@ import { Project } from '../types';
 
 interface ProjectDetailProps {
   project: Project;
-  onClose: () => void;
 }
 
-const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }) => {
+const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
+  const handleClose = () => {
+    window.history.back();
+  };
+
   return (
     <div className="fixed inset-0 z-[100] bg-[#040809] overflow-y-auto animate-fade-in-up">
       <div className="max-w-screen-xl mx-auto px-6 py-24">
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="fixed top-12 right-12 glass w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-transform z-[110]"
         >
           <svg
@@ -116,7 +119,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }) => {
           {/* Footer CTA */}
           <footer className="py-24 border-t border-zinc-900 flex justify-between items-center">
             <button
-              onClick={onClose}
+              onClick={handleClose}
               className="mono text-xs text-zinc-600 hover:text-white transition-colors"
             >
               ← BACK_TO_ARCHIVE
