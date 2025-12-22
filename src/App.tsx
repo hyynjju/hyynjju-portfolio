@@ -62,6 +62,12 @@ const App: React.FC = () => {
     return /Twitter|FBAN|FBAV/.test(ua);
   };
 
+  useEffect(() => {
+    if (isInAppBrowser()) {
+      document.body.classList.add('in-app-browser');
+    }
+  }, []);
+
   const triggerTransition = useCallback((callback: () => void) => {
     if (isInAppBrowser()) {
       callback();
