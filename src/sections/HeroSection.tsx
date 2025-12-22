@@ -73,7 +73,7 @@ const HeroSection = ({ onCTAClick }: HeroSectionProps) => {
       </div>
 
       <motion.div
-        className="relative z-10 w-full max-w-screen-2xl px-8 flex flex-col items-center text-center space-y-16"
+        className="relative z-10 w-full max-w-screen-2xl px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center space-y-16"
         variants={heroContainerVariants}
         initial="hidden"
         animate="visible"
@@ -99,7 +99,7 @@ const HeroSection = ({ onCTAClick }: HeroSectionProps) => {
                 },
               },
             }}
-            className="serif text-[10vw] md:text-[8vw] lg:text-[7vw] text-white leading-[0.85] tracking-tighter italic"
+            className="serif text-[15vw] sm:text-[10vw] md:text-[8vw] lg:text-[7vw] text-white leading-[0.9] sm:leading-[0.85] tracking-tighter italic"
           >
             <motion.span variants={lineVariants} style={{ display: 'block' }}>
               {splitTextToChars('Bridging the Ideal')}

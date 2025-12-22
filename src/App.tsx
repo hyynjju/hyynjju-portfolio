@@ -22,6 +22,11 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    // Safari swipe-back 대응용 base history state
+    window.history.replaceState({ page: 'home' }, '', window.location.href);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const sections = Object.values(Section);
       for (const section of sections) {
@@ -43,6 +48,15 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handlePopState = () => {
+      setSelectedProject(null);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   const triggerTransition = useCallback((callback: () => void) => {
     const overlay = document.getElementById('transition-overlay');
     if (overlay) {
@@ -59,6 +73,12 @@ const App: React.FC = () => {
   }, []);
 
   const handleProjectSelect = (project: Project) => {
+    window.history.pushState(
+      { projectId: project.id, slug: project.slug },
+      '',
+      `${project.slug}`
+    );
+
     triggerTransition(() => {
       setSelectedProject(project);
       setHoveredProject(null);
@@ -95,12 +115,7 @@ const App: React.FC = () => {
         </div>
       )}
 
-      {selectedProject && (
-        <ProjectDetail
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
-      )}
+      {selectedProject && <ProjectDetail project={selectedProject} />}
 
       <HeroSection
         onCTAClick={() => {

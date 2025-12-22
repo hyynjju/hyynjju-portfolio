@@ -33,6 +33,9 @@
         font-family: 'Inter', sans-serif;
         overflow-x: hidden;
         margin: 0;
+      }
+
+      body.cursor-hidden {
         cursor: none;
       }
 
@@ -156,6 +159,18 @@
         z-index: 9998;
       }
     </style>
+    <style>
+      @media (hover: none) and (pointer: coarse) {
+        #cursor-container {
+          display: none;
+          pointer-events: none;
+        }
+
+        body {
+          cursor: auto;
+        }
+      }
+    </style>
     <link rel="stylesheet" href="/index.css" />
   </head>
   <body class="grain-overlay">
@@ -168,28 +183,40 @@
     <div id="root"></div>
 
     <script>
-      const cursor = document.getElementById('cursor');
-      const follower = document.getElementById('cursor-follower');
+      const isTouchDevice = window.matchMedia(
+        '(hover: none) and (pointer: coarse)'
+      ).matches;
 
-      document.addEventListener('mousemove', (e) => {
-        cursor.style.transform = `translate3d(${e.clientX - 4}px, ${
-          e.clientY - 4
-        }px, 0)`;
-        follower.style.transform = `translate3d(${e.clientX - 16}px, ${
-          e.clientY - 16
-        }px, 0)`;
-      });
+      if (!isTouchDevice) {
+        document.body.classList.add('cursor-hidden');
+      }
 
-      document.addEventListener('mousedown', () => {
-        cursor.style.transform += ' scale(2.5)';
-      });
+      if (!isTouchDevice) {
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('cursor-follower');
 
-      document.addEventListener('mouseup', () => {
-        cursor.style.transform = cursor.style.transform.replace(
-          ' scale(2.5)',
-          ''
-        );
-      });
+        document.addEventListener('mousemove', (e) => {
+          cursor.style.transform = `translate3d(${e.clientX - 4}px, ${
+            e.clientY - 4
+          }px, 0)`;
+          follower.style.transform = `translate3d(${e.clientX - 16}px, ${
+            e.clientY - 16
+          }px, 0)`;
+        });
+
+        document.addEventListener('mousedown', (e) => {
+          if (e.pointerType === 'touch') return;
+          cursor.style.transform += ' scale(2.5)';
+        });
+
+        document.addEventListener('mouseup', (e) => {
+          if (e.pointerType === 'touch') return;
+          cursor.style.transform = cursor.style.transform.replace(
+            ' scale(2.5)',
+            ''
+          );
+        });
+      }
     </script>
     <script type="importmap">
       {

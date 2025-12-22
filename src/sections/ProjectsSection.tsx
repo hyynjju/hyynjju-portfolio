@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
 import { Project, Section } from '../types';
 
+const isTouchDevice =
+  typeof window !== 'undefined' &&
+  window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
 interface ProjectsSectionProps {
   projects: Project[];
   onSelect: (project: Project) => void;
@@ -49,17 +53,21 @@ const ProjectsSection = ({
             <motion.div
               key={project.id}
               onClick={() => onSelect(project)}
-              onMouseEnter={() => onHover(project)}
-              onMouseLeave={() => onHover(null)}
+              onMouseEnter={() => {
+                if (!isTouchDevice) onHover(project);
+              }}
+              onMouseLeave={() => {
+                if (!isTouchDevice) onHover(null);
+              }}
               variants={projectCardVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.35 }}
-              className={`group cursor-none space-y-12 ${
-                index % 2 === 1 ? 'md:mt-40' : ''
-              }`}
+              className={`group ${
+                !isTouchDevice ? 'cursor-none' : ''
+              } space-y-12 ${index % 2 === 1 ? 'md:mt-40' : ''}`}
             >
-              <div className="aspect-video glass rounded-[2.5rem] overflow-hidden relative">
+              <div className="aspect-video glass rounded-[1rem] overflow-hidden relative">
                 <img
                   src={project.thumbnail}
                   alt={project.title}
