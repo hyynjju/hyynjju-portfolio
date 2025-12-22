@@ -14,7 +14,7 @@ const FooterSection = () => {
 
         {/* Links + Copyright */}
         <div className="flex flex-col items-start md:items-end">
-          <div className="flex gap-6 text-[10px] mono uppercase tracking-[0.5em] text-zinc-600">
+          <div className="flex gap-6 text-xs mono uppercase tracking-[0.5em] text-zinc-600">
             <a
               href="https://github.com/hyynjju"
               target="_blank"
@@ -39,7 +39,7 @@ const FooterSection = () => {
             </a>
           </div>
 
-          <div className="mono text-[9px] text-zinc-800 tracking-[0.4em] uppercase font-bold text-left md:text-right leading-loose">
+          <div className="mono text-xs text-zinc-800 tracking-[0.4em] uppercase font-bold text-left md:text-right leading-loose">
             2025 &copy; SYSTEM DESIGN LAB
           </div>
         </div>

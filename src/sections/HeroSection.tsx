@@ -84,7 +84,7 @@ const HeroSection = ({ onCTAClick }: HeroSectionProps) => {
             className="flex items-center gap-3 justify-center"
           >
             <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-            <p className="text-[11px] mono uppercase tracking-[0.6em] text-zinc-400">
+            <p className="text-xs mono uppercase tracking-[0.6em] text-zinc-400">
               {DESIGNER_NAME} // 2025 PROTOCOL
             </p>
           </motion.div>
@@ -135,17 +135,17 @@ const HeroSection = ({ onCTAClick }: HeroSectionProps) => {
           className="flex flex-col md:flex-row items-center gap-12 pointer-events-auto"
         >
           <div className="text-center md:text-right space-y-1">
-            <p className="text-zinc-300 text-[9px] mono uppercase tracking-widest leading-none">
+            <p className="text-zinc-300 text-xs mono uppercase tracking-widest leading-none">
               {DESIGNER_ROLE}
             </p>
-            <p className="text-white text-[10px] mono uppercase tracking-[0.4em] pt-1">
+            <p className="text-white text-s mono uppercase tracking-[0.4em] pt-1">
               SEOUL, KR
             </p>
           </div>
 
           <button
             onClick={onCTAClick}
-            className="btn-monotone px-14 py-6 rounded-full font-bold text-[11px] mono tracking-[0.5em]"
+            className="btn-monotone px-14 py-6 rounded-full font-bold text-xs mono tracking-[0.5em]"
           >
             VIEW PORTFOLIO
           </button>
