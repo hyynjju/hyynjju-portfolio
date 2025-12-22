@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import Navigation from './components/Navigation';
 import InteractiveAsciiSphere from './components/InteractiveAsciiSphere';
 import ProjectDetail from './components/ProjectDetail';
@@ -21,7 +22,6 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Add class to body to hide standard cursor when project preview is active
     if (hoveredProject) {
       document.body.classList.add('project-hovering');
     } else {
@@ -99,6 +99,60 @@ const App: React.FC = () => {
     }
   };
 
+  const charVariants = {
+    hidden: { filter: 'blur(12px)', opacity: 0, y: 8 },
+    visible: {
+      filter: 'blur(0px)',
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8, // 메인 텍스트 등장 속도
+        ease: [0.215, 0.61, 0.355, 1.0],
+      },
+    },
+  };
+
+  const splitTextToChars = (text: string, className?: string) => {
+    return text.split('').map((char, i) => (
+      <motion.span
+        key={i}
+        variants={charVariants}
+        className={className}
+        style={{ display: 'inline-block' }}
+      >
+        {char === ' ' ? '\u00A0' : char}
+      </motion.span>
+    ));
+  };
+
+  const heroContainerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1, // 메인 텍스트 전 등장 지연
+      },
+    },
+  };
+
+  const lineVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.03, // 각 글자 등장 지연
+      },
+    },
+  };
+
+  const simpleBlurVariants = {
+    hidden: { filter: 'blur(10px)', opacity: 0, y: 15 },
+    visible: {
+      filter: 'blur(0px)',
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.1 }, // 상단 글자 등장 지연
+    },
+  };
+
   return (
     <div className="min-h-screen selection:bg-white selection:text-black relative">
       <Navigation activeSection={activeSection} onNavigate={scrollTo} />
@@ -130,34 +184,82 @@ const App: React.FC = () => {
         id={Section.HERO}
         className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden"
       >
-        {/* Gradient only in Hero */}
         <div className="hero-gradient"></div>
 
-        {/* Sphere Art */}
         <div className="absolute inset-0 z-0 flex items-center justify-center opacity-30">
           <InteractiveAsciiSphere />
         </div>
 
-        <div className="relative z-10 w-full max-w-screen-2xl px-8 flex flex-col items-center text-center">
-          <div className="space-y-6 scroll-reveal visible">
-            <div className="flex items-center gap-3 justify-center">
+        <motion.div
+          className="relative z-10 w-full max-w-screen-2xl px-8 flex flex-col items-center text-center space-y-16"
+          variants={heroContainerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <div className="space-y-6">
+            <motion.div
+              variants={simpleBlurVariants}
+              className="flex items-center gap-3 justify-center"
+            >
               <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
               <p className="text-[11px] mono uppercase tracking-[0.6em] text-zinc-400">
                 {DESIGNER_NAME} // 2025 PROTOCOL
               </p>
-            </div>
+            </motion.div>
 
-            <h1 className="serif text-[10vw] md:text-[8vw] lg:text-[7vw] text-white leading-[0.85] tracking-tighter italic">
-              Bridging the Ideal
-              <br />
-              <span className="text-zinc-500 font-light opacity-60">
-                and the
-              </span>{' '}
-              Real
-            </h1>
+            <motion.h1
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.4,
+                    delayChildren: 0.2, // 메인 텍스트 등장 지연
+                  },
+                },
+              }}
+              className="serif text-[10vw] md:text-[8vw] lg:text-[7vw] text-white leading-[0.85] tracking-tighter italic"
+            >
+              <motion.span
+                variants={lineVariants}
+                style={{ display: 'block', whiteSpace: 'nowrap' }}
+              >
+                {splitTextToChars('Bridging the Ideal')}
+              </motion.span>
+
+              <motion.span
+                variants={lineVariants}
+                style={{
+                  display: 'block',
+                  marginTop: '0.5rem',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {splitTextToChars(
+                  'and the',
+                  'text-zinc-500 font-light opacity-60'
+                )}{' '}
+                {splitTextToChars('Real')}
+              </motion.span>
+            </motion.h1>
           </div>
 
-          <div className="mt-20 flex flex-col md:flex-row items-center gap-12 scroll-reveal visible pointer-events-auto">
+          <motion.div
+            variants={{
+              hidden: { filter: 'blur(10px)', opacity: 0, y: 15 },
+              visible: {
+                filter: 'blur(0px)',
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 1,
+                  ease: [0.16, 1, 0.3, 1],
+                  when: 'afterChildren',
+                  delay: 1.15,
+                },
+              },
+            }}
+            className="flex flex-col md:flex-row items-center gap-12 pointer-events-auto"
+          >
             <div className="text-center md:text-right space-y-1">
               <p className="text-zinc-300 text-[9px] mono uppercase tracking-widest leading-none">
                 {DESIGNER_ROLE}
@@ -167,8 +269,6 @@ const App: React.FC = () => {
               </p>
             </div>
 
-            <div className="hidden md:block w-px h-12 bg-zinc-800"></div>
-
             <button
               onClick={() =>
                 triggerTransition(() => scrollTo(Section.PROJECTS))
@@ -177,12 +277,8 @@ const App: React.FC = () => {
             >
               VIEW PORTFOLIO
             </button>
-          </div>
-        </div>
-
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-30">
-          <div className="w-px h-20 bg-gradient-to-b from-white to-transparent"></div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* PROJECTS SECTION */}
