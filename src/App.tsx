@@ -57,19 +57,29 @@ const App: React.FC = () => {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  const isInAppBrowser = () => {
+    const ua = navigator.userAgent || navigator.vendor;
+    return /Twitter|FBAN|FBAV/.test(ua);
+  };
+
   const triggerTransition = useCallback((callback: () => void) => {
-    const overlay = document.getElementById('transition-overlay');
-    if (overlay) {
-      overlay.classList.add('active');
-      setTimeout(() => {
-        callback();
-      }, 750);
-      setTimeout(() => {
-        overlay.classList.remove('active');
-      }, 1500);
-    } else {
+    if (isInAppBrowser()) {
       callback();
+      return;
     }
+
+    const overlay = document.getElementById('transition-overlay');
+    if (!overlay) {
+      callback();
+      return;
+    }
+
+    overlay.classList.add('active');
+
+    setTimeout(callback, 750);
+    setTimeout(() => {
+      overlay.classList.remove('active');
+    }, 1500);
   }, []);
 
   const handleProjectSelect = (project: Project) => {
