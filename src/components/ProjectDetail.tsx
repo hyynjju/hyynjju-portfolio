@@ -1,6 +1,8 @@
 import React from 'react';
 import { Project } from '../types';
 
+const MAX_PROJECT_IMAGES = 20;
+
 interface ProjectDetailProps {
   project: Project;
 }
@@ -9,6 +11,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
   const handleClose = () => {
     window.history.back();
   };
+
+  const projectImages = Array.from({ length: MAX_PROJECT_IMAGES }, (_, i) => {
+    const index = String(i + 1).padStart(2, '0');
+    return `/assets/projects/${project.slug}/${index}.png`;
+  });
 
   return (
     <div className="fixed inset-0 z-[100] bg-[#040809] overflow-y-auto animate-fade-in-up">
@@ -32,7 +39,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
         <div className="space-y-32">
           {/* Header */}
           <header className="space-y-8 max-w-4xl">
-            <div className="flex items-center gap-4 mono text-[10px] text-zinc-500 tracking-[0.3em] uppercase">
+            <div className="flex items-center gap-4 mono text-xs text-zinc-500 tracking-[0.3em] uppercase">
               <span>{project.category}</span>
               <div className="w-8 h-px bg-zinc-800"></div>
               <span>Artifact {project.id}</span>
@@ -105,22 +112,52 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
                 </p>
               </section>
 
-              <section className="space-y-8 border-t border-zinc-900 pt-24">
+              <section className="space-y-12 border-t border-zinc-900 pt-24">
                 <h3 className="serif text-4xl text-white italic">
                   The Outcome
                 </h3>
-                <p className="text-zinc-400 text-lg leading-relaxed font-light">
+
+                <p className="text-zinc-400 text-lg leading-relaxed font-light max-w-3xl">
                   {project.outcome}
                 </p>
               </section>
             </div>
           </div>
 
+          {/* Full-width Project Images */}
+          <section className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mt-48">
+            <div
+              className="w-full mx-auto max-w-[1500px]"
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
+              onMouseDown={(e) => e.preventDefault()}
+            >
+              {projectImages.map((src) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt={`${project.title} detail`}
+                  draggable={false}
+                  className="w-full h-auto object-cover select-none"
+                  style={{
+                    userSelect: 'none',
+                    WebkitUserDrag: 'none',
+                    pointerEvents: 'none',
+                  }}
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.display =
+                      'none';
+                  }}
+                />
+              ))}
+            </div>
+          </section>
+
           {/* Footer CTA */}
           <footer className="py-24 border-t border-zinc-900 flex justify-between items-center">
             <button
               onClick={handleClose}
-              className="mono text-xs text-zinc-600 hover:text-white transition-colors"
+              className="mono text-s text-zinc-600 hover:text-white transition-colors px-6 py-6 -mx-6 -my-4"
             >
               ← BACK_TO_ARCHIVE
             </button>

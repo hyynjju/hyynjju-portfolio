@@ -26,7 +26,6 @@ export const PROJECTS: Project[] = [
 
     thumbnail: '/assets/thumbnails/medeasy.png',
     icon: '/assets/icons/medeasy.png',
-    pdfUrl: 'https://notion.so/your-notion-medeasy',
   },
 
   {
@@ -53,7 +52,6 @@ export const PROJECTS: Project[] = [
 
     thumbnail: '/assets/thumbnails/yakk.png',
     icon: '/assets/icons/yakk.png',
-    pdfUrl: 'https://notion.so/your-notion-yakk',
   },
 
   {
@@ -73,7 +71,6 @@ export const PROJECTS: Project[] = [
 
     thumbnail: '/assets/thumbnails/mekki.png',
     icon: '/assets/icons/mekki.png',
-    pdfUrl: 'https://notion.so/your-notion-mekki',
   },
 
   {
@@ -93,6 +90,5 @@ export const PROJECTS: Project[] = [
 
     thumbnail: '/assets/thumbnails/poom.png',
     icon: '/assets/icons/poom.png',
-    pdfUrl: 'https://notion.so/your-notion-poom',
   },
 ];
