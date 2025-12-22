@@ -12,7 +12,6 @@ export interface Project {
   tags: string[];
   icon: string;
   thumbnail: string;
-  pdfUrl: string;
 }
 
 export interface Message {
