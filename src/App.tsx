@@ -12,6 +12,10 @@ const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<Section>(Section.HERO);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
+
+  // 애니메이션을 위한 추가 상태
+  const [renderProject, setRenderProject] = useState<Project | null>(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -21,6 +25,25 @@ const App: React.FC = () => {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  // 호버 애니메이션
+  useEffect(() => {
+    if (hoveredProject) {
+      // 나타날 때
+      setRenderProject(hoveredProject);
+      const timer = requestAnimationFrame(() => {
+        setIsTransitioning(true);
+      });
+      return () => cancelAnimationFrame(timer);
+    } else {
+      // 사라질 때
+      setIsTransitioning(false);
+      const timer = setTimeout(() => {
+        setRenderProject(null);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [hoveredProject]);
 
   useEffect(() => {
     // Safari swipe-back 대응용 base history state
@@ -117,16 +140,25 @@ const App: React.FC = () => {
         }}
       />
 
-      {hoveredProject && (
+      {/* 프로젝트 Hover 커스텀 커서 애니메이션 */}
+      {renderProject && (
         <div
-          className="fixed pointer-events-none z-[11000] transform -translate-x-1/2 -translate-y-1/2"
-          style={{ left: mousePos.x, top: mousePos.y }}
+          className="fixed pointer-events-none z-[11000] will-change-transform"
+          style={{
+            left: mousePos.x,
+            top: mousePos.y,
+            transition: 'transform 0.1s ease-out',
+          }}
         >
-          <div className="w-40 h-40 glass rounded-[32px] overflow-hidden shadow-2xl border border-white/20">
+          <div
+            className={`w-40 h-40 glass rounded-[32px] overflow-hidden shadow-2xl border-[4px] border-white/20  transition-all duration-300 ease-in-out transform -translate-x-1/2 -translate-y-1/2 ${
+              isTransitioning ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+            }`}
+          >
             <img
-              src={hoveredProject.icon}
-              alt={`${hoveredProject.title} app icon`}
-              className="w-full h-full object-cover bg-black"
+              src={renderProject.icon}
+              alt={`${renderProject.title} app icon`}
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
