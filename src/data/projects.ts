@@ -26,6 +26,7 @@ export const PROJECTS: Project[] = [
 
     thumbnail: '/assets/thumbnails/medeasy.png',
     icon: '/assets/icons/medeasy.png',
+    accentColor: '#264288',
   },
 
   {
@@ -52,6 +53,7 @@ export const PROJECTS: Project[] = [
 
     thumbnail: '/assets/thumbnails/yakk.png',
     icon: '/assets/icons/yakk.png',
+    accentColor: '#528322',
   },
 
   {
@@ -71,6 +73,7 @@ export const PROJECTS: Project[] = [
 
     thumbnail: '/assets/thumbnails/mekki.png',
     icon: '/assets/icons/mekki.png',
+    accentColor: '#298C9B',
   },
 
   {
@@ -90,5 +93,6 @@ export const PROJECTS: Project[] = [
 
     thumbnail: '/assets/thumbnails/poom.png',
     icon: '/assets/icons/poom.png',
+    accentColor: '#613C9C',
   },
 ];

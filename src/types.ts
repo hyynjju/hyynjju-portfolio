@@ -12,6 +12,7 @@ export interface Project {
   tags: string[];
   icon: string;
   thumbnail: string;
+  accentColor: string;
 }
 
 export interface Message {
