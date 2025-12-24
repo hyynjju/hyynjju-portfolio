@@ -258,11 +258,6 @@ const ProjectsSection = ({
                     }}
                   />
 
-                  {/* Top-right ID label */}
-                  <div className="absolute top-6 right-6 mono text-[10px] text-white/60 tracking-[0.3em]">
-                    STP_{project.id}
-                  </div>
-
                   {/* Text overlay */}
                   <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-8">
                     {/* Title + Subtitle (Top) */}
@@ -271,14 +266,14 @@ const ProjectsSection = ({
                         {project.title}
                       </h3>
 
-                      <p className="mono text-[11px] md:text-[12px] text-white/70 uppercase tracking-[0.35em] transition-all duration-500 ease-out group-hover:opacity-0 group-hover:-translate-y-1">
+                      <p className="mono text-md text-white/70 uppercase tracking-[0.35em] transition-all duration-500 ease-out group-hover:opacity-0 group-hover:-translate-y-1">
                         {project.category}
                       </p>
                     </div>
 
                     {/* Description + Action (Bottom) */}
                     <div className="flex items-end justify-between gap-6">
-                      <p className="mono text-sm md:text-base text-white/70 leading-relaxed max-w-[75%] opacity-0 translate-y-2 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
+                      <p className="mono text-xl text-white/70 leading-relaxed max-w-[75%] opacity-0 translate-y-2 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0">
                         {project.description}
                       </p>
 
