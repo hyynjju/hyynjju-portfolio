@@ -99,7 +99,7 @@ const HeroSection = ({ onCTAClick }: HeroSectionProps) => {
                 },
               },
             }}
-            className="serif text-[15vw] sm:text-[10vw] md:text-[8vw] lg:text-[7vw] text-white leading-[0.9] sm:leading-[0.85] tracking-tighter italic"
+            className="text-[15vw] sm:text-[10vw] md:text-[8vw] lg:text-[7vw] text-white leading-[0.9] sm:leading-[0.85] tracking-tighter italic"
           >
             <motion.span variants={lineVariants} style={{ display: 'block' }}>
               {splitTextToChars('Bridging the Ideal')}
