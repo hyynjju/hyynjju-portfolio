@@ -121,7 +121,7 @@ export default function EclipseSection() {
 
               <a
                 href={`mailto:${DESIGNER_EMAIL}`}
-                className="group inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-3.5 rounded-full glass border border-white/15 hover:border-white/25 transition-colors"
+                className="group inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-3.5 rounded-2xl glass border border-white/15 hover:border-white/25 transition-colors"
               >
                 <span className="relative block overflow-hidden h-[1.25em] leading-[1.25em]">
                   <span className="block mono italic md:text-md font-medium tracking-widest leading-[1.25em] text-white/50 transition-transform duration-300 ease-out group-hover:-translate-y-full">
