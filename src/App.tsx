@@ -3,6 +3,7 @@ import Navigation from './components/Navigation';
 import ProjectDetail from './components/ProjectDetail';
 import HeroSection from './sections/HeroSection';
 import ProjectsSection from './sections/ProjectsSection';
+import EclipseSection from './sections/EclipseSection';
 import FooterSection from './sections/FooterSection';
 import { Section, Project } from './types';
 import { PROJECTS } from './data/projects';
@@ -150,6 +151,8 @@ const App: React.FC = () => {
         onSelect={handleProjectSelect}
         onHover={setHoveredProject}
       />
+
+      <EclipseSection />
 
       <FooterSection />
     </div>

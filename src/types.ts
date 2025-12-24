@@ -12,6 +12,7 @@ export interface Project {
   tags: string[];
   icon: string;
   thumbnail: string;
+  accentColor: string;
 }
 
 export interface Message {
@@ -22,6 +23,5 @@ export interface Message {
 export enum Section {
   HERO = 'hero',
   PROJECTS = 'projects',
-  ABOUT = 'about',
-  AI = 'ai',
+  CONTACT = 'contact',
 }

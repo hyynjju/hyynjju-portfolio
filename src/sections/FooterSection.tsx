@@ -7,7 +7,7 @@ const FooterSection = () => {
         {/* Email */}
         <a
           href={`mailto:${DESIGNER_EMAIL}`}
-          className="serif text-3xl sm:text-4xl md:text-6xl text-white tracking-tighter italic opacity-80 hover:opacity-100 transition-opacity text-left"
+          className="serif text-4xl sm:text-3xl md:text-4xl text-white tracking-tighter italic opacity-80 hover:opacity-100 transition-opacity text-left"
         >
           {DESIGNER_EMAIL}
         </a>
