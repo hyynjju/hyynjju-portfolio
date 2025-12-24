@@ -23,8 +23,6 @@ export default function EclipseSection() {
       const viewportCenterY = window.innerHeight / 2;
       const distance = Math.abs(elementCenterY - viewportCenterY);
 
-      // 0 at center, 1 when far enough away. This makes the eclipse peak at screen center
-      // and prevents it from continuing to grow after passing the center.
       const range = Math.max(1, (window.innerHeight + rect.height) / 2);
       const t = 1 - Math.min(1, distance / range);
 
@@ -43,7 +41,6 @@ export default function EclipseSection() {
 
   useEffect(() => {
     const tick = () => {
-      // Smoothly ease current scale toward target scale
       const target = targetScaleRef.current;
       const current = currentScaleRef.current;
       const next = current + (target - current) * 0.12;
@@ -121,16 +118,66 @@ export default function EclipseSection() {
 
               <a
                 href={`mailto:${DESIGNER_EMAIL}`}
-                className="group inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-3.5 rounded-2xl glass border border-white/15 hover:border-white/25 transition-colors"
+                className="group relative inline-flex items-center justify-center rounded-2xl bg-[#040809] overflow-hidden p-[2px]"
+                style={{ width: 'fit-content' }}
               >
-                <span className="relative block overflow-hidden h-[1.25em] leading-[1.25em]">
-                  <span className="block mono italic md:text-md font-medium tracking-widest leading-[1.25em] text-white/50 transition-transform duration-300 ease-out group-hover:-translate-y-full">
-                    {DESIGNER_EMAIL}
+                {/* Base Line */}
+                <div className="absolute inset-0 rounded-2xl border-[2px] border-white/10 pointer-events-none" />
+
+                {/* Glowing Gradient Line */}
+                <svg
+                  className="absolute inset-0 w-full h-full pointer-events-none z-10"
+                  style={{ overflow: 'visible' }}
+                >
+                  <defs>
+                    <linearGradient
+                      id="glowGradient"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="0%"
+                    >
+                      <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+                      <stop offset="30%" stopColor="rgba(255,255,255,0)" />
+                      <stop offset="50%" stopColor="rgba(255,255,255,0.6)" />
+                      <stop offset="70%" stopColor="rgba(255,255,255,0)" />
+                      <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+
+                      <animateTransform
+                        attributeName="gradientTransform"
+                        type="rotate"
+                        from="0 0.5 0.5"
+                        to="360 0.5 0.5"
+                        dur="4s"
+                        repeatCount="indefinite"
+                      />
+                    </linearGradient>
+                  </defs>
+
+                  <rect
+                    x="1"
+                    y="1"
+                    width="calc(100% - 2px)"
+                    height="calc(100% - 2px)"
+                    rx="15"
+                    fill="none"
+                    stroke="url(#glowGradient)"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+
+                {/* Email Button */}
+                <div className="relative px-6 py-3 md:px-8 md:py-3.5 flex items-center justify-center bg-[#040809] rounded-[14px] z-0">
+                  <span className="relative z-20 block overflow-hidden h-[1.25em] leading-[1.25em]">
+                    <span className="block mono italic md:text-md font-medium tracking-widest text-white/50 transition-transform duration-300 ease-out group-hover:-translate-y-full">
+                      {DESIGNER_EMAIL}
+                    </span>
+                    <span className="absolute left-0 top-full block mono italic md:text-md font-medium tracking-widest text-white transition-transform duration-300 ease-out group-hover:-translate-y-full">
+                      {DESIGNER_EMAIL}
+                    </span>
                   </span>
-                  <span className="absolute left-0 top-full block mono italic md:text-md font-medium tracking-widest leading-[1.25em] text-white transition-transform duration-300 ease-out group-hover:-translate-y-full">
-                    {DESIGNER_EMAIL}
-                  </span>
-                </span>
+                </div>
               </a>
             </div>
           </div>

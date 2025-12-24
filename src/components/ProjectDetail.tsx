@@ -20,22 +20,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
   return (
     <div className="fixed inset-0 z-[100] bg-[#040809] overflow-y-auto animate-fade-in-up">
       <div className="max-w-screen-xl mx-auto px-6 py-24">
-        <button
-          onClick={handleClose}
-          className="fixed top-4 right-4 md:top-12 md:right-12 glass w-12 h-12 rounded-full flex items-center justify-center hover:scale-110 transition-transform z-[110]"
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="white"
-            strokeWidth="2"
-          >
-            <path d="M18 6L6 18M6 6l12 12" />
-          </svg>
-        </button>
-
         <div className="space-y-32">
           {/* Header */}
           <header className="space-y-8 max-w-4xl">
