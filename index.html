@@ -88,25 +88,6 @@
         opacity: 0;
       }
 
-      .custom-cursor {
-        width: 8px;
-        height: 8px;
-        background: white;
-        border-radius: 50%;
-        position: absolute;
-        transition: transform 0.1s ease-out;
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      }
-
-      .custom-cursor-follower {
-        width: 32px;
-        height: 32px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 50%;
-        position: absolute;
-        transition: transform 0.2s ease-out;
-      }
-
       .screen-transition {
         position: fixed;
         inset: 0;
@@ -179,50 +160,9 @@
     <link rel="stylesheet" href="/index.css" />
   </head>
   <body class="grain-overlay">
-    <div id="cursor-container">
-      <div class="custom-cursor" id="cursor"></div>
-      <div class="custom-cursor-follower" id="cursor-follower"></div>
-    </div>
-
     <div class="screen-transition" id="transition-overlay"></div>
     <div id="root"></div>
 
-    <script>
-      const isTouchDevice = window.matchMedia(
-        '(hover: none) and (pointer: coarse)'
-      ).matches;
-
-      if (!isTouchDevice) {
-        document.body.classList.add('cursor-hidden');
-      }
-
-      if (!isTouchDevice) {
-        const cursor = document.getElementById('cursor');
-        const follower = document.getElementById('cursor-follower');
-
-        document.addEventListener('mousemove', (e) => {
-          cursor.style.transform = `translate3d(${e.clientX - 4}px, ${
-            e.clientY - 4
-          }px, 0)`;
-          follower.style.transform = `translate3d(${e.clientX - 16}px, ${
-            e.clientY - 16
-          }px, 0)`;
-        });
-
-        document.addEventListener('mousedown', (e) => {
-          if (e.pointerType === 'touch') return;
-          cursor.style.transform += ' scale(2.5)';
-        });
-
-        document.addEventListener('mouseup', (e) => {
-          if (e.pointerType === 'touch') return;
-          cursor.style.transform = cursor.style.transform.replace(
-            ' scale(2.5)',
-            ''
-          );
-        });
-      }
-    </script>
     <script type="importmap">
       {
         "imports": {
