@@ -81,9 +81,8 @@ const HeroSection = ({ onCTAClick }: HeroSectionProps) => {
         <div className="space-y-6">
           <motion.div
             variants={simpleBlurVariants}
-            className="flex items-center gap-3 justify-center"
+            className="flex items-center justify-center"
           >
-            <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
             <p className="text-xs mono uppercase tracking-[0.6em] text-zinc-400">
               {DESIGNER_NAME} // 2025 PROTOCOL
             </p>

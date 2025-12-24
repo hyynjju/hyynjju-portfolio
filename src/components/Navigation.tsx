@@ -11,9 +11,9 @@ const Navigation: React.FC<NavigationProps> = ({
   onNavigate,
 }) => {
   const navItems = [
-    { label: 'Studio', value: Section.HERO },
+    { label: 'About', value: Section.HERO },
     { label: 'Archive', value: Section.PROJECTS },
-    { label: 'Philosophy', value: Section.ABOUT },
+    { label: 'Contact', value: Section.CONTACT },
   ];
 
   return (

@@ -23,6 +23,5 @@ export interface Message {
 export enum Section {
   HERO = 'hero',
   PROJECTS = 'projects',
-  ABOUT = 'about',
-  AI = 'ai',
+  CONTACT = 'contact',
 }
