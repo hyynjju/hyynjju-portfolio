@@ -12,10 +12,36 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
     window.history.back();
   };
 
-  const projectImages = Array.from({ length: MAX_PROJECT_IMAGES }, (_, i) => {
-    const index = String(i + 1).padStart(2, '0');
-    return `/assets/projects/${project.slug}/${index}.png`;
-  });
+  const renderImageGroup = (index: number) => {
+    const paddedIndex = String(index).padStart(2, '0');
+    const pngPath = `/assets/projects/${project.slug}/${paddedIndex}.png`;
+    const jpgPath = `/assets/projects/${project.slug}/${paddedIndex}.jpg`;
+
+    return (
+      <React.Fragment key={paddedIndex}>
+        <img
+          src={pngPath}
+          alt=""
+          className="w-full h-auto block object-cover"
+          loading="lazy"
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).style.display = 'none';
+          }}
+          onContextMenu={(e) => e.preventDefault()}
+        />
+        <img
+          src={jpgPath}
+          alt=""
+          className="w-full h-auto block object-cover"
+          loading="lazy"
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).style.display = 'none';
+          }}
+          onContextMenu={(e) => e.preventDefault()}
+        />
+      </React.Fragment>
+    );
+  };
 
   return (
     <div className="fixed inset-0 z-[100] bg-[#040809] overflow-y-auto animate-fade-in-up">
@@ -100,7 +126,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
                 <h3 className="serif text-4xl text-white italic">
                   The Outcome
                 </h3>
-
                 <p className="text-zinc-400 text-lg leading-relaxed font-light max-w-3xl">
                   {project.outcome}
                 </p>
@@ -108,32 +133,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
             </div>
           </div>
 
-          {/* Full-width Project Images */}
+          {/* Full-width Project Images 섹션 */}
           <section className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mt-48">
             <div
-              className="w-full mx-auto max-w-[1500px]"
+              className="w-full mx-auto max-w-[1500px] flex flex-col"
               onContextMenu={(e) => e.preventDefault()}
-              onDragStart={(e) => e.preventDefault()}
-              onMouseDown={(e) => e.preventDefault()}
             >
-              {projectImages.map((src) => (
-                <img
-                  key={src}
-                  src={src}
-                  alt={`${project.title} detail`}
-                  draggable={false}
-                  className="w-full h-auto object-cover select-none"
-                  style={{
-                    userSelect: 'none',
-                    WebkitUserDrag: 'none',
-                    pointerEvents: 'none',
-                  }}
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).style.display =
-                      'none';
-                  }}
-                />
-              ))}
+              {/* 1번부터 MAX_PROJECT_IMAGES까지 순차적으로 렌더링 */}
+              {Array.from({ length: MAX_PROJECT_IMAGES }, (_, i) =>
+                renderImageGroup(i + 1),
+              )}
             </div>
           </section>
 
@@ -141,7 +150,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
           <footer className="py-24 border-t border-zinc-900 flex justify-between items-center">
             <button
               onClick={handleClose}
-              className="mono text-s text-zinc-600 hover:text-white transition-colors px-6 py-6 -mx-6 -my-4"
+              className="mono text-sm text-zinc-600 hover:text-white transition-colors px-6 py-6 -mx-6 -my-4"
             >
               ← BACK_TO_ARCHIVE
             </button>
