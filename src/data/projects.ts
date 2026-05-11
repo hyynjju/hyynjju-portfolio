@@ -3,6 +3,44 @@ import { Project } from '../types';
 export const PROJECTS: Project[] = [
   {
     id: '01',
+    slug: 'mekki',
+    title: 'MEKKI',
+    category: 'Service Design',
+    description:
+      'A fictional bibimbap chain brand designed around customization, speed, and health-conscious dining.',
+    longDescription:
+      'MEKKI is a conceptual service design project inspired by the operational model of Subway. The project explores how customizable food experiences can be optimized for office workers seeking fast, healthy meals.',
+    process:
+      'The project is backed by surveys, in-depth interviews, and usability testing. As part of a design team, I contributed to UX strategy and interface design, focusing on clarity of choice and fast decision-making.',
+    outcome:
+      'MEKKI stands out as the most research-driven project in my portfolio, demonstrating my ability to translate user research into concrete service and UI concepts.',
+    tags: ['UX Research', 'Service Design', 'Brand UI', 'Team Project'],
+
+    thumbnail: '/assets/thumbnails/mekki.png',
+    icon: '/assets/icons/mekki.png',
+    accentColor: '#298C9B',
+  },
+  {
+    id: '02',
+    slug: 'poom',
+    title: 'Poom',
+    category: 'Community Platform',
+    description:
+      'A community app concept for short-term Korean residents living abroad.',
+    longDescription:
+      'Poom is a solo design project addressing the fragmented information experience of short-term overseas residents. The app focuses on trusted peer-to-peer exchange for housing, second-hand goods, and local settlement tips.',
+    process:
+      'Based on surveys and in-depth interviews, I designed the information architecture and interaction flows to reduce uncertainty and trial-and-error during early settlement stages.',
+    outcome:
+      'Poom demonstrates strong visual completeness and trend awareness. While the project remains in the design phase, it clearly showcases my UX problem-definition and interface design capabilities.',
+    tags: ['UXUI', 'Community', 'Research', 'Mobile App', 'Solo Project'],
+
+    thumbnail: '/assets/thumbnails/poom.png',
+    icon: '/assets/icons/poom.png',
+    accentColor: '#613C9C',
+  },
+  {
+    id: '03',
     slug: 'medeasy',
     title: 'MedEasy',
     category: 'Healthcare UX',
@@ -30,7 +68,7 @@ export const PROJECTS: Project[] = [
   },
 
   {
-    id: '02',
+    id: '04',
     slug: 'yakk',
     title: 'Yakk',
     category: 'Language Learning',
@@ -54,45 +92,5 @@ export const PROJECTS: Project[] = [
     thumbnail: '/assets/thumbnails/yakk.png',
     icon: '/assets/icons/yakk.png',
     accentColor: '#528322',
-  },
-
-  {
-    id: '03',
-    slug: 'mekki',
-    title: 'MEKKI',
-    category: 'Service Design',
-    description:
-      'A fictional bibimbap chain brand designed around customization, speed, and health-conscious dining.',
-    longDescription:
-      'MEKKI is a conceptual service design project inspired by the operational model of Subway. The project explores how customizable food experiences can be optimized for office workers seeking fast, healthy meals.',
-    process:
-      'The project is backed by surveys, in-depth interviews, and usability testing. As part of a design team, I contributed to UX strategy and interface design, focusing on clarity of choice and fast decision-making.',
-    outcome:
-      'MEKKI stands out as the most research-driven project in my portfolio, demonstrating my ability to translate user research into concrete service and UI concepts.',
-    tags: ['UX Research', 'Service Design', 'Brand UI', 'Team Project'],
-
-    thumbnail: '/assets/thumbnails/mekki.png',
-    icon: '/assets/icons/mekki.png',
-    accentColor: '#298C9B',
-  },
-
-  {
-    id: '04',
-    slug: 'poom',
-    title: 'Poom',
-    category: 'Community Platform',
-    description:
-      'A community app concept for short-term Korean residents living abroad.',
-    longDescription:
-      'Poom is a solo design project addressing the fragmented information experience of short-term overseas residents. The app focuses on trusted peer-to-peer exchange for housing, second-hand goods, and local settlement tips.',
-    process:
-      'Based on surveys and in-depth interviews, I designed the information architecture and interaction flows to reduce uncertainty and trial-and-error during early settlement stages.',
-    outcome:
-      'Poom demonstrates strong visual completeness and trend awareness. While the project remains in the design phase, it clearly showcases my UX problem-definition and interface design capabilities.',
-    tags: ['UXUI', 'Community', 'Research', 'Mobile App', 'Solo Project'],
-
-    thumbnail: '/assets/thumbnails/poom.png',
-    icon: '/assets/icons/poom.png',
-    accentColor: '#613C9C',
   },
 ];
