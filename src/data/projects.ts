@@ -3,25 +3,6 @@ import { Project } from '../types';
 export const PROJECTS: Project[] = [
   {
     id: '01',
-    slug: 'mekki',
-    title: 'MEKKI',
-    category: 'Service Design',
-    description:
-      'A fictional bibimbap chain brand designed around customization, speed, and health-conscious dining.',
-    longDescription:
-      'MEKKI is a conceptual service design project inspired by the operational model of Subway. The project explores how customizable food experiences can be optimized for office workers seeking fast, healthy meals.',
-    process:
-      'The project is backed by surveys, in-depth interviews, and usability testing. As part of a design team, I contributed to UX strategy and interface design, focusing on clarity of choice and fast decision-making.',
-    outcome:
-      'MEKKI stands out as the most research-driven project in my portfolio, demonstrating my ability to translate user research into concrete service and UI concepts.',
-    tags: ['UX Research', 'Service Design', 'Brand UI', 'Team Project'],
-
-    thumbnail: '/assets/thumbnails/mekki.png',
-    icon: '/assets/icons/mekki.png',
-    accentColor: '#298C9B',
-  },
-  {
-    id: '02',
     slug: 'poom',
     title: 'Poom',
     category: 'Community Platform',
@@ -40,7 +21,51 @@ export const PROJECTS: Project[] = [
     accentColor: '#613C9C',
   },
   {
+    id: '02',
+    slug: 'yakk',
+    title: 'Yakk',
+    category: 'Language Learning',
+    description:
+      'An AI-powered simultaneous interpretation training service for advanced language learners.',
+    longDescription:
+      'Yakk is a solo project designed for intermediate to advanced foreign language learners. The service generates scripts using AI and provides real-time interpretation simulation through TTS, allowing users to practice under realistic conditions.',
+    process:
+      'I independently handled planning, UX/UI design, and frontend development. The focus was on fast iteration and deployability, prioritizing a simple but extensible structure over feature-heavy implementation.',
+    outcome:
+      'The service is fully deployed as a web application. While the feature set is intentionally minimal, the project demonstrates strong potential for UX iteration through real user testing and future expansion.',
+    tags: [
+      'UXUI',
+      'Frontend',
+      'AI',
+      'Language Learning',
+      'Solo Project',
+      'Web',
+    ],
+    thumbnail: '/assets/thumbnails/yakk.png',
+    icon: '/assets/icons/yakk.png',
+    accentColor: '#528322',
+  },
+  {
     id: '03',
+    slug: 'mekki',
+    title: 'MEKKI',
+    category: 'Service Design',
+    description:
+      'A fictional bibimbap chain brand designed around customization, speed, and health-conscious dining.',
+    longDescription:
+      'MEKKI is a conceptual service design project inspired by the operational model of Subway. The project explores how customizable food experiences can be optimized for office workers seeking fast, healthy meals.',
+    process:
+      'The project is backed by surveys, in-depth interviews, and usability testing. As part of a design team, I contributed to UX strategy and interface design, focusing on clarity of choice and fast decision-making.',
+    outcome:
+      'MEKKI stands out as the most research-driven project in my portfolio, demonstrating my ability to translate user research into concrete service and UI concepts.',
+    tags: ['UX Research', 'Service Design', 'Brand UI', 'Team Project'],
+
+    thumbnail: '/assets/thumbnails/mekki.png',
+    icon: '/assets/icons/mekki.png',
+    accentColor: '#298C9B',
+  },
+  {
+    id: '04',
     slug: 'medeasy',
     title: 'MedEasy',
     category: 'Healthcare UX',
@@ -65,32 +90,5 @@ export const PROJECTS: Project[] = [
     thumbnail: '/assets/thumbnails/medeasy.png',
     icon: '/assets/icons/medeasy.png',
     accentColor: '#264288',
-  },
-
-  {
-    id: '04',
-    slug: 'yakk',
-    title: 'Yakk',
-    category: 'Language Learning',
-    description:
-      'An AI-powered simultaneous interpretation training service for advanced language learners.',
-    longDescription:
-      'Yakk is a solo project designed for intermediate to advanced foreign language learners. The service generates scripts using AI and provides real-time interpretation simulation through TTS, allowing users to practice under realistic conditions.',
-    process:
-      'I independently handled planning, UX/UI design, and frontend development. The focus was on fast iteration and deployability, prioritizing a simple but extensible structure over feature-heavy implementation.',
-    outcome:
-      'The service is fully deployed as a web application. While the feature set is intentionally minimal, the project demonstrates strong potential for UX iteration through real user testing and future expansion.',
-    tags: [
-      'UXUI',
-      'Frontend',
-      'AI',
-      'Language Learning',
-      'Solo Project',
-      'Web',
-    ],
-
-    thumbnail: '/assets/thumbnails/yakk.png',
-    icon: '/assets/icons/yakk.png',
-    accentColor: '#528322',
   },
 ];
