@@ -201,7 +201,7 @@
 .more-project-grid::-webkit-scrollbar{height:5px}
 .more-project-grid::-webkit-scrollbar-track{background:transparent}
 .more-project-grid::-webkit-scrollbar-thumb{background:#c9c9c9;border-radius:99px}
-@media(max-width:760px){.more-project-grid{gap:14px;padding-bottom:14px}.more-project-card{flex-basis:82vw}}
+@media(max-width:760px){.more-project-grid{gap:14px;padding-bottom:14px}.more-project-card{flex-basis:62vw}}
 /* Hide the rail scrollbar, preserve a gutter at every snap point, and fade its right edge. */
 .more-projects{position:relative}
 .more-project-grid{margin-inline:-24px;padding-inline:24px;scroll-padding-inline:24px;scrollbar-width:none}
