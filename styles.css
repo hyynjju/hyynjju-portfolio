@@ -537,3 +537,16 @@ body.search-open{overflow:hidden}
 }
 
 .project-hover-cursor-card{background:#333}
+
+/* Slightly tighten project tag spacing across cards, filters, and detail facts. */
+.filter-row>.tag{padding:10px}
+.cover-tags .tag{padding:7px 10px}
+.detail-chip{min-height:34px;padding:0 10px}
+.status,.detail-chip.status-released,.detail-chip.status-concept{font-size:14px}
+@media(max-width:760px){
+  .filter-row>.tag{padding:7px}
+  .cover-tags .tag{padding:6px 8px}
+  .detail-chip{min-height:30px;padding:0 8px}
+  .status{font-size:12px;line-height:17px;padding:6px 8px}
+  .detail-chip.status-released,.detail-chip.status-concept{font-size:13px}
+}
