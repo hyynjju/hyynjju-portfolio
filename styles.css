@@ -510,3 +510,6 @@ body.search-open{overflow:hidden}
   .search-overlay{padding:48px 12px}
   .search-dialog{height:calc(100dvh - 96px);max-height:none}
 }
+
+/* Keep the main cover placeholder stretched to its card while the image loads. */
+.cover-art.image-loading{position:absolute!important;inset:0}
