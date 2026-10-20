@@ -78,6 +78,24 @@ if (project && main) {
 
   main.setAttribute('aria-busy', 'false');
 
+  if (!document.querySelector('.portfolio-footer')) {
+    main.insertAdjacentHTML('afterend', `
+      <footer class="portfolio-footer">
+        <div class="footer-columns" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="portfolio-footer-content">
+          <a class="footer-email" href="mailto:hyynjju@gmail.com">hyynjju@gmail.com</a>
+          <nav class="footer-socials" aria-label="Social links">
+            <a href="https://www.linkedin.com/in/hyynjju" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.behance.net/hyynjju" target="_blank" rel="noopener noreferrer">Behance</a>
+            <a href="https://student.redesigner.jp/students/f2f66c47732c8ff908a5c6ccc66bcaf8" target="_blank" rel="noopener noreferrer">ReDesigner</a>
+            <a href="https://github.com/hyynjju" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </nav>
+        </div>
+      </footer>`);
+  }
+
   // Gallery discovery runs after project copy and layout have rendered, so image checks never delay text.
   findGalleryImages(project.assets?.gallery).then((images) => {
     if (!images.length) return;
