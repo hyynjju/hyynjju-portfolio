@@ -452,10 +452,10 @@ body.search-open{overflow:hidden}
 @media(max-width:760px){.about-profile{padding-top:92px}.about-profile .profile-photo-placeholder{width:80px;height:80px}}
 
 /* Optional header logo: upload the SVG to assets/site/logo.svg. */
-.wordmark-logo{display:none;width:auto;height:23px;max-width:120px;object-fit:contain}
+.wordmark-logo{display:none;width:auto;height:20px;max-width:120px;object-fit:contain}
 .wordmark.has-logo .wordmark-logo{display:block}
 .wordmark.has-logo .wordmark-fallback{display:none}
-@media(max-width:760px){.wordmark-logo{height:21px;max-width:104px}}
+@media(max-width:760px){.wordmark-logo{height:20px;max-width:104px}}
 
 /* Show the uploaded screen image only; missing files leave a neutral gray phone screen. */
 .phone-screen.hero-screen-placeholder{background:#e5e7eb!important}
@@ -478,4 +478,30 @@ body.search-open{overflow:hidden}
   .hero h1{margin-top:274px}
   .phone-stage{top:140px;width:330px;height:457px;transform:translateX(-50%) scale(.92)}
   .phone-stage .phone{width:232px;height:457px;margin-left:-116px}
+}
+
+/* Fade the mockups with a white overlay instead of masking their PNG pixels and shadows. */
+.hero{padding-top:100px}
+.hero h1{margin-top:432px}
+.phone-stage{
+  height:520px;
+  overflow:visible;
+  mask-image:none!important;
+  -webkit-mask-image:none!important;
+}
+.phone-stage::after{
+  content:"";
+  position:absolute;
+  z-index:5;
+  pointer-events:none;
+  left:-80px;
+  right:-80px;
+  top:274px;
+  bottom:-60px;
+  background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,#fff 18%,#fff 100%);
+}
+@media(max-width:760px){
+  .hero{padding-top:76px}
+  .hero h1{margin-top:334px}
+  .phone-stage{height:520px}
 }
