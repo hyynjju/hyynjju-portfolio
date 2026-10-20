@@ -563,3 +563,8 @@ body.search-open{overflow:hidden}
   .status{padding:5px 7px}
   .detail-chip.status-released,.detail-chip.status-concept{min-height:29px;padding-inline:7px}
 }
+
+@media(max-width:760px){
+  /* Preserve the original visual spacing while keeping the 44px tap target. */
+  .site-header .search-pill{margin-inline:-14px}
+}
