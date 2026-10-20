@@ -513,3 +513,7 @@ body.search-open{overflow:hidden}
 
 /* Keep the main cover placeholder stretched to its card while the image loads. */
 .cover-art.image-loading{position:absolute!important;inset:0}
+
+/* Use one rounded clip for detail app icons; remove the extra gradient rim and shadow. */
+.app-icon-placeholder{background:transparent;box-shadow:none}
+.app-icon-placeholder img{border-radius:0}
