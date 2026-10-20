@@ -1,178 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hyunju Cho | UX/UI Designer Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-
-    <!-- iOS -->
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@200;300;400&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --bg-color: #040809;
-        --text-main: #fafafa;
-        --text-muted: #71717a;
-      }
-
-      body {
-        background-color: var(--bg-color);
-        color: var(--text-main);
-        font-family: 'Archivo', sans-serif;
-        overflow-x: hidden;
-        margin: 0;
-      }
-
-      body.cursor-hidden {
-        cursor: none;
-      }
-
-      .serif {
-        font-family: 'Archivo', sans-serif;
-      }
-      .mono {
-        font-family: 'Archivo', sans-serif;
-      }
-
-      .btn-monotone {
-        background-color: white;
-        color: #000;
-        transition: all 0.3s ease;
-        cursor: none;
-      }
-      .btn-monotone:hover {
-        background-color: #e5e5e5;
-      }
-
-      .glass {
-        background: rgba(255, 255, 255, 0.02);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      /* Hero-only teal gradient: transparent at top, deep teal at bottom */
-      .hero-gradient {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to bottom,
-          transparent 20px,
-          rgba(106, 240, 255, 0.4) 100%
-        );
-        z-index: -1;
-        pointer-events: none;
-      }
-
-      #cursor-container {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: 10000;
-        transition: opacity 0.3s ease;
-      }
-
-      /* Class to hide original cursor when project preview is active */
-      body.project-hovering #cursor-container {
-        opacity: 0;
-      }
-
-      .screen-transition {
-        position: fixed;
-        inset: 0;
-        z-index: 20050;
-        background: linear-gradient(
-          135deg,
-          #040809 0%,
-          #0e7490 50%,
-          #040809 100%
-        );
-        transform: translateY(100%);
-        transition: transform 1.5s cubic-bezier(0.8, 0, 0.2, 1);
-        pointer-events: none;
-      }
-      .screen-transition.active {
-        transform: translateY(0);
-        pointer-events: all;
-      }
-
-      /* Fix X (Twitter) in-app browser viewport bug */
-      body.in-app-browser .screen-transition {
-        display: none !important;
-      }
-
-      .scroll-reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
-      }
-
-      .scroll-reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      ::-webkit-scrollbar {
-        width: 3px;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 10px;
-      }
-
-      .grain-overlay::after {
-        content: '';
-        position: fixed;
-        top: -110%;
-        left: -110%;
-        width: 300%;
-        height: 300%;
-        background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-        background-repeat: repeat;
-        opacity: 0.02;
-        pointer-events: none;
-        z-index: 9998;
-      }
-    </style>
-    <style>
-      @media (hover: none) and (pointer: coarse) {
-        #cursor-container {
-          display: none;
-          pointer-events: none;
-        }
-
-        body {
-          cursor: auto;
-        }
-      }
-    </style>
-    <link rel="stylesheet" href="/index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="From Data to Design. Built for Reality. Product designer portfolio." />
+    <title>Hyunju Cho — Product Designer</title>
+    <script src="/projects.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
-  <body class="grain-overlay">
-    <div class="screen-transition" id="transition-overlay"></div>
-    <div id="root"></div>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Hyunju Cho home">ju</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="mailto:hyynjju@gmail.com">Contact</a><a href="/about.html">About</a>
+        <button class="language" type="button" aria-label="Language: Japanese">JPN <svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <button class="search-pill" type="button" aria-haspopup="dialog" aria-label="Search"><svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Search</button>
+      </nav>
+    </header>
 
-    <script type="importmap">
-      {
-        "imports": {
-          "react": "https://esm.sh/react@^19.2.3",
-          "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-          "react/": "https://esm.sh/react@^19.2.3/",
-          "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
-        }
-      }
-    </script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <main>
+      <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-kicker"><span class="greeting-text">Hello,</span><span class="avatar" aria-hidden="true"><img class="profile-slideshow-image" alt=""></span><span class="greeting-text">I’m Hyunju Cho!</span></div>
+        <div class="phone-stage">
+          <div class="phone phone-left"><div class="phone-screen screen-ui"><img class="hero-screen-image" src="/assets/site/hero-screens/ui.png" alt="" onerror="window.imageFormatFallback(this)"><div class="screen-top"><i></i><i></i><i></i></div><div class="screen-title"></div><div class="screen-card lilac"></div><div class="screen-row"><i></i></div><div class="screen-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+          <div class="phone phone-center"><div class="phone-screen screen-data"><img class="hero-screen-image" src="/assets/site/hero-screens/data.png" alt="" onerror="window.imageFormatFallback(this)"><div class="screen-top"><i></i><i></i><i></i></div><div class="data-label"></div><div class="data-number"></div><div class="data-chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="data-line"></div><div class="screen-card pale"></div><div class="data-dots"></div></div></div>
+          <div class="phone phone-right"><div class="phone-screen screen-code"><img class="hero-screen-image" src="/assets/site/hero-screens/code.png" alt="" onerror="window.imageFormatFallback(this)"><div class="code-window"><div class="code-dots"></div><div class="code-rule"></div></div></div></div>
+        </div>
+        <h1>From Data to Design.<br/>Built for Reality.</h1>
+        <p class="hero-subtitle">数字から課題を捉え、実装まで見据えるデザイナー</p>
+      </section>
+
+      <section class="intro-section content-width" id="about">
+        
+        <div class="principles">
+          <article class="principle"><div class="principle-art art-amber"><span>Implementation<br/>Aware</span><div class="art-glow"></div><div class="principle-visual implementation-visual" aria-hidden="true"><div class="code-panel"><div class="code-panel-top"><i></i><i></i><i></i></div><pre class="swift-code"><code><span class="swift-keyword">struct</span> <span class="swift-type">InsightView</span>: <span class="swift-type">View</span> {
+  <span class="swift-keyword">let</span> completion: <span class="swift-type">Double</span>
+
+  <span class="swift-keyword">var</span> body: <span class="swift-keyword">some</span> <span class="swift-type">View</span> {
+    <span class="swift-type">VStack</span>(spacing: <span class="swift-number">12</span>) {
+      <span class="swift-type">Text</span>(<span class="swift-string">"Overview"</span>)
+      <span class="swift-type">ProgressView</span>(value: completion)
+    }
+  }
+}</code></pre></div></div></div><p>開発上の制約や実現可能性を理解し、デザインの意図と実装の両立を考えながらUIを設計する。</p></article>
+          <article class="principle"><div class="principle-art art-blue"><span>Data<br/>Driven</span><div class="art-glow"></div><div class="principle-visual data-visual" aria-hidden="true"><div class="chart-grid"><i></i><i></i><i></i></div><div class="chart-bars"><i class="bar-muted bar-one"></i><i class="bar-muted bar-two"></i><i class="bar-blue"></i></div></div></div><p>ユーザーの行動データや定量的な指標を分析し、数値の背景にある課題を捉えて改善点を明確にする。</p></article>
+          <article class="principle"><div class="principle-art art-pink"><span>Product<br/>Context</span><div class="art-glow"></div><div class="principle-visual context-visual" aria-hidden="true"><div class="design-sheet"><div class="sheet-sidebar"><i></i><i></i><i></i><i></i><i></i></div><div class="sheet-content"><div class="sheet-heading"></div><div class="sheet-subheading"></div><div class="sheet-swatches"><i></i><i></i><i></i></div><div class="sheet-components"><i></i><i></i><i></i><i></i></div><div class="sheet-lines"><i></i><i></i><i></i></div></div></div></div></div><p>プロダクトの設計意図を理解し、一貫性を保ちながらユーザーにとって最適な体験を考える。</p></article>
+        </div>
+      </section>
+
+      <section class="projects-section content-width" id="projects">
+        <div class="section-heading"><h2>Projects</h2></div>
+        <div class="filter-row" aria-label="Filter projects">
+          <button class="filter-chip" type="button" data-filter="UI/UX" aria-pressed="false">UI/UX</button>
+          <button class="filter-chip" type="button" data-filter="Frontend" aria-pressed="false">Frontend</button>
+          <button class="filter-chip" type="button" data-filter="Data" aria-pressed="false">Data</button>
+          <button class="filter-chip" type="button" data-filter="Branding" aria-pressed="false">Branding</button>
+        </div>
+        <div class="project-grid" id="project-grid"></div>
+        <div class="project-hover-cursor" aria-hidden="true"><div class="project-hover-cursor-card"></div></div>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+    <script src="/hero-scan.js"></script>
+    <script src="/project-hover.js"></script>
+  <script src="/search-ui.js"></script>
+  <script src="/profile-slideshow.js"></script></body>
 </html>
