@@ -507,6 +507,6 @@ body.search-open{overflow:hidden}
 }
 
 @media(max-width:680px){
-  .search-overlay{padding:36px 12px}
+  .search-overlay{padding:48px 12px}
   .search-dialog{height:calc(100dvh - 96px);max-height:none}
 }
