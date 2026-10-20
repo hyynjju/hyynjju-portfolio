@@ -453,3 +453,10 @@ body.search-open{overflow:hidden}
   .detail-page-loading .detail-overview{min-height:390px}
 }
 @media(prefers-reduced-motion:reduce){.image-loading::before{animation:none;transform:none;opacity:.3}}
+
+/* About profile card sizing and spacing */
+.about-profile{padding-top:112px}
+.about-profile .profile-photo-placeholder{width:84px;height:84px}
+.about-profile .profile-name{font-size:16px;line-height:21px}
+.about-profile .profile-role{margin-top:10px}
+@media(max-width:760px){.about-profile{padding-top:92px}.about-profile .profile-photo-placeholder{width:80px;height:80px}}
