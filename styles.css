@@ -452,7 +452,7 @@ body.search-open{overflow:hidden}
 @media(max-width:760px){.about-profile{padding-top:92px}.about-profile .profile-photo-placeholder{width:80px;height:80px}}
 
 /* Optional header logo: upload the SVG to assets/site/logo.svg. */
-.wordmark-logo{display:none;width:auto;height:20px;max-width:120px;object-fit:contain}
+.wordmark-logo{display:none;width:auto;height:20px;max-width:120px;object-fit:contain;opacity:.4}
 .wordmark.has-logo .wordmark-logo{display:block}
 .wordmark.has-logo .wordmark-fallback{display:none}
 @media(max-width:760px){.wordmark-logo{height:20px;max-width:104px}}
