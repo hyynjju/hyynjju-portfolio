@@ -425,3 +425,31 @@ body.search-open{overflow:hidden}
 .status-concept{background:rgba(0,0,0,.05);color:rgba(0,0,0,.6)}
 .detail-chip.status-released{background:rgba(37,99,235,.1);color:rgba(37,99,235,.7)}
 .detail-chip.status-concept{background:rgba(0,0,0,.05);color:rgba(0,0,0,.6)}
+
+/* Neutral placeholders keep the layout steady until local portfolio images load. */
+.hero-kicker>.avatar,.profile-photo-placeholder{background:#e5e7eb;color:transparent}
+.profile-photo-placeholder{display:block}
+.profile-photo-placeholder img{background:#e5e7eb}
+.image-loading{position:relative!important;overflow:hidden!important;background:#e5e7eb!important}
+.image-loading::before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;transform:translateX(-100%);background:linear-gradient(105deg,transparent 25%,rgba(255,255,255,.72) 48%,transparent 70%);animation:image-placeholder-shimmer 1.25s ease-in-out infinite}
+@keyframes image-placeholder-shimmer{to{transform:translateX(100%)}}
+.cover-art.image-loading .cover-device{display:none}
+.detail-hero-image-frame.image-loading{background:#e5e7eb!important}
+.app-icon-placeholder.image-loading{background:#e5e7eb!important;box-shadow:none}
+.detail-page-loading .detail-skeleton-line,.detail-page-loading .detail-skeleton-block{position:relative;overflow:hidden;background:#e9eaec;border-radius:7px}
+.detail-skeleton-line{height:15px;max-width:480px;margin:0 auto 12px}
+.detail-skeleton-heading{height:36px;width:min(76vw,760px);margin-top:46px}
+.detail-skeleton-lead{height:18px;width:min(58vw,560px)}
+.detail-skeleton-button{width:142px;height:46px;border-radius:999px;margin-top:25px}
+.detail-page-loading .detail-hero-image-frame{margin-top:27px}
+.detail-skeleton-copy .detail-skeleton-line{width:135px;margin:0 0 20px}
+.detail-skeleton-block{height:160px;width:100%}
+.detail-page-loading .detail-overview{min-height:310px}
+@media(max-width:760px){
+  .detail-skeleton-heading{height:28px;width:88vw;margin-top:32px}
+  .detail-skeleton-lead{width:78vw}
+  .detail-skeleton-button{height:40px;margin-top:19px}
+  .detail-page-loading .detail-hero-image-frame{margin-top:24px}
+  .detail-page-loading .detail-overview{min-height:390px}
+}
+@media(prefers-reduced-motion:reduce){.image-loading::before{animation:none;transform:none;opacity:.3}}

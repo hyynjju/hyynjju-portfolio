@@ -1,5 +1,6 @@
 window.imageFormatFallback = (image) => {
   if (image.dataset.jpgFallback) {
+    image.parentElement?.classList.remove('image-loading');
     image.remove();
     return;
   }

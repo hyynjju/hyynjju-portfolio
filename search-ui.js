@@ -35,7 +35,7 @@
     `<button class="search-category${category === activeCategory ? ' is-active' : ''}" type="button" data-category="${escapeHTML(category)}">${escapeHTML(category)}</button>`
   ).join('');
 
-  const thumbMarkup = (project) => `<div class="search-thumb ${escapeHTML(project.cover)}" aria-hidden="true"><img src="${escapeHTML(project.assets?.cover || '')}" alt="" onerror="window.imageFormatFallback(this)" onload="this.parentElement.querySelector('.cover-device')?.remove()"><div class="cover-device"><div class="mini-chart"><i></i><i></i><i></i><i></i><i></i></div></div></div>`;
+  const thumbMarkup = (project) => `<div class="search-thumb image-loading ${escapeHTML(project.cover)}" aria-hidden="true"><img src="${escapeHTML(project.assets?.cover || '')}" alt="" loading="lazy" decoding="async" onerror="window.imageFormatFallback(this)" onload="this.parentElement.classList.remove('image-loading')"></div>`;
   const renderResults = () => {
     const query = input.value.trim().toLocaleLowerCase();
     clearButton.hidden = input.value.length === 0;

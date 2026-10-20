@@ -1,5 +1,6 @@
 const slug = location.pathname.split('/').filter(Boolean).pop();
 const project = (window.projects || []).find((item) => item.slug === slug);
+const main = document.querySelector('main');
 
 const findGalleryImages = async (folder) => {
   if (!folder) return [];
@@ -13,26 +14,17 @@ const findGalleryImages = async (folder) => {
 
   for (let number = 1; number <= 99; number += 1) {
     const fileNumber = String(number).padStart(2, '0');
-    let foundPath = '';
-    for (const extension of ['png', 'jpg']) {
-      const path = `${folder}/${fileNumber}.${extension}`;
-      if (await imageExists(path)) {
-        foundPath = path;
-        break;
-      }
-    }
-    if (!foundPath) break;
-    paths.push(foundPath);
+    const candidates = ['png', 'jpg'].map((extension) => `${folder}/${fileNumber}.${extension}`);
+    const results = await Promise.all(candidates.map(imageExists));
+    const match = results.findIndex(Boolean);
+    if (match < 0) break;
+    paths.push(candidates[match]);
   }
-
   return paths;
 };
 
-if (project) {
+if (project && main) {
   document.title = `${project.name} — Hyunju Cho`;
-
-  (async () => {
-  const galleryImages = await findGalleryImages(project.assets?.gallery);
 
   const escapeHTML = (value = '') => String(value).replace(/[&<>"']/g, (char) => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -43,13 +35,13 @@ if (project) {
   const workItems = project.work || project.categories || [];
   const toolItems = project.tools || [];
 
-  document.querySelector('main').innerHTML = `
+  main.innerHTML = `
     <section class="detail-intro">
-      <div class="app-icon-placeholder" role="img" aria-label="${escapeHTML(project.name)} app icon"><img src="${escapeHTML(project.assets?.icon || '')}" alt="" onerror="window.imageFormatFallback(this)"></div>
+      <div class="app-icon-placeholder image-loading" role="img" aria-label="${escapeHTML(project.name)} app icon"><img src="${escapeHTML(project.assets?.icon || '')}" alt="" onload="this.parentElement.classList.remove('image-loading')" onerror="window.imageFormatFallback(this)"></div>
       <h1 class="detail-heading">${escapeHTML(project.headline || project.name)}</h1>
       <p class="detail-lead">${escapeHTML(project.description)}</p>
       ${project.url ? `<a class="detail-visit" href="${escapeHTML(project.url)}" target="_blank" rel="noopener noreferrer">View Project</a>` : ''}
-      <div class="detail-hero-image-frame"><img class="detail-hero-image" src="${escapeHTML(project.assets?.cover || '')}" alt="${escapeHTML(project.name)} project cover" onerror="window.imageFormatFallback(this)"></div>
+      <div class="detail-hero-image-frame image-loading"><img class="detail-hero-image" src="${escapeHTML(project.assets?.cover || '')}" alt="${escapeHTML(project.name)} project cover" onload="this.parentElement.classList.remove('image-loading')" onerror="window.imageFormatFallback(this)"></div>
     </section>
 
     <section class="detail-overview content-width" id="about">
@@ -66,18 +58,15 @@ if (project) {
       </div>
     </section>
 
-    <section class="detail-case-images" aria-label="${escapeHTML(project.name)} project images" ${galleryImages.length ? '' : 'hidden'}>
-      ${galleryImages.map((src, index) => `<div class="case-image"><img src="${escapeHTML(src)}" alt="${escapeHTML(project.name)} project detail ${index + 1}" onerror="window.imageFormatFallback(this)"></div>`).join('')}
-    </section>
+    <section class="detail-case-images" aria-label="${escapeHTML(project.name)} project images" hidden></section>
 
     <section class="more-projects content-width">
       <h2>More Project</h2>
       <div class="more-project-grid">${otherProjects.map((item) => `
         <a class="more-project-card" href="/projects/${encodeURIComponent(item.slug)}/">
-          <div class="more-project-cover ${escapeHTML(item.cover)}">
-            <img class="more-project-cover-image" src="${escapeHTML(item.assets?.cover || '')}" alt="" onerror="window.imageFormatFallback(this)" onload="this.parentElement.querySelector('.cover-device')?.remove()">
+          <div class="more-project-cover image-loading ${escapeHTML(item.cover)}">
+            <img class="more-project-cover-image" src="${escapeHTML(item.assets?.cover || '')}" alt="" onload="this.parentElement.classList.remove('image-loading')" onerror="window.imageFormatFallback(this)">
             <div class="cover-tags">${item.categories.map((category) => `<span class="tag">${escapeHTML(category)}</span>`).join('')}</div>
-            <div class="cover-device" aria-hidden="true"><div class="mini-chart"><i></i><i></i><i></i><i></i><i></i></div></div>
           </div>
           <div class="more-project-meta">
             <div class="project-title-row"><h3 class="project-title">${escapeHTML(item.name)}</h3>${item.status ? `<span class="status ${item.status === 'Released' ? 'status-released' : 'status-concept'}">${escapeHTML(item.status)}</span>` : ''}</div>
@@ -86,5 +75,14 @@ if (project) {
         </a>`).join('')}
       </div>
     </section>`;
-  })();
+
+  main.setAttribute('aria-busy', 'false');
+
+  // Gallery discovery runs after project copy and layout have rendered, so image checks never delay text.
+  findGalleryImages(project.assets?.gallery).then((images) => {
+    if (!images.length) return;
+    const gallery = main.querySelector('.detail-case-images');
+    gallery.innerHTML = images.map((src, index) => `<div class="case-image"><img src="${escapeHTML(src)}" alt="${escapeHTML(project.name)} project detail ${index + 1}" loading="lazy" onerror="window.imageFormatFallback(this)"></div>`).join('');
+    gallery.hidden = false;
+  });
 }
