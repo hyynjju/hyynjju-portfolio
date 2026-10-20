@@ -517,3 +517,23 @@ body.search-open{overflow:hidden}
 /* Use one rounded clip for detail app icons; remove the extra gradient rim and shadow. */
 .app-icon-placeholder{background:linear-gradient(155deg,#334155,#050505);box-shadow:0 10px 28px rgba(0,0,0,.12)}
 .app-icon-placeholder img{border-radius:0}
+
+@media(max-width:760px){
+  .site-header .nav-links a[href^="mailto:"]{display:none}
+  .site-header .search-pill{
+    width:44px;
+    min-width:44px;
+    height:44px;
+    min-height:44px;
+    padding:0;
+    justify-content:center;
+    background:transparent;
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+    font-size:0;
+  }
+  .project-cover{height:auto;aspect-ratio:1.65/1}
+  .more-project-cover{min-height:0;aspect-ratio:1.65/1}
+}
+
+.project-hover-cursor-card{background:#333}
