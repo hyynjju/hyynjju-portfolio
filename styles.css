@@ -515,5 +515,5 @@ body.search-open{overflow:hidden}
 .cover-art.image-loading{position:absolute!important;inset:0}
 
 /* Use one rounded clip for detail app icons; remove the extra gradient rim and shadow. */
-.app-icon-placeholder{background:linear-gradient(155deg,#334155,#050505);box-shadow:none}
+.app-icon-placeholder{background:linear-gradient(155deg,#334155,#050505);box-shadow:0 10px 28px rgba(0,0,0,.12)}
 .app-icon-placeholder img{border-radius:0}
