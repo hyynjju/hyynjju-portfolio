@@ -537,7 +537,7 @@ body.search-open{overflow:hidden}
   .more-project-cover{min-height:0;aspect-ratio:1.65/1}
 }
 
-.project-hover-cursor-card{background:#333}
+.project-hover-cursor-card{background:transparent}
 
 /* Slightly tighten project tag spacing across cards, filters, and detail facts. */
 .filter-row>.tag{padding:10px}
@@ -568,3 +568,5 @@ body.search-open{overflow:hidden}
   /* Preserve the original visual spacing while keeping the 44px tap target. */
   .site-header .search-pill{margin-inline:-14px}
 }
+
+.cursor-preview-icon.is-loading{background:#333}

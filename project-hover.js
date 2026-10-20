@@ -22,6 +22,8 @@ if(projectGrid&&projectCursor&&cursorCard&&canHoverProjects.matches){
       preview.className='cursor-preview-icon';
       preview.src=project.assets.icon;
       preview.alt='';
+      preview.classList.add('is-loading');
+      preview.onload=()=>preview.classList.remove('is-loading');
       preview.onerror=()=>window.imageFormatFallback(preview);
       cursorCard.append(preview);
     }
