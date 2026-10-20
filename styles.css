@@ -58,7 +58,7 @@
 /* Keep English UI copy on the project typeface; preserve Japanese copy styling. */
 .site-header,.nav-links,.language,.search-pill,.hero-kicker,.hero h1,.section-heading h2,.filter-row,.project-title,.status,.cover-tags,.subpage-hero h1,.detail-title,.detail-topline,.back-link,.detail-copy .project-tags{font-family:'Alte Haas Grotesk',sans-serif}
 .project-hover-cursor{position:fixed;left:0;top:0;z-index:11000;pointer-events:none;will-change:transform;transform:translate3d(-1000px,-1000px,0);transition:transform .1s ease-out;display:block}
-.project-hover-cursor-card{width:160px;height:160px;overflow:hidden;border:4px solid rgba(255,255,255,.2);border-radius:32px;background:transparent;backdrop-filter:none;box-shadow:0 25px 60px rgba(0,0,0,.22);opacity:0;transform:translate(-50%,-50%) scale(.75);transition:opacity .3s ease-in-out,transform .3s ease-in-out}
+.project-hover-cursor-card{width:160px;height:160px;overflow:hidden;border:5px solid rgba(255,255,255,.2);border-radius:32px;background:transparent;backdrop-filter:none;box-shadow:0 25px 60px rgba(0,0,0,.22);opacity:0;transform:translate(-50%,-50%) scale(.75);transition:opacity .3s ease-in-out,transform .3s ease-in-out}
 .project-hover-cursor.is-visible .project-hover-cursor-card{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .cursor-preview-icon{display:block;width:100%;height:100%;margin:0;object-fit:cover;border-radius:28px}
 @media(hover:none),(pointer:coarse){.project-hover-cursor{display:none}}
