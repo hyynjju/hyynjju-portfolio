@@ -570,3 +570,5 @@ body.search-open{overflow:hidden}
 }
 
 .cursor-preview-icon.is-loading{background:#333}
+
+.hero-kicker>.avatar{box-shadow:0 3px 9px rgba(0,0,0,.12)}
