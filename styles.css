@@ -550,3 +550,6 @@ body.search-open{overflow:hidden}
   .status{font-size:12px;line-height:17px;padding:6px 8px}
   .detail-chip.status-released,.detail-chip.status-concept{font-size:13px}
 }
+
+.project-meta{gap:10px}
+.more-project-meta .project-desc{margin-top:4px}
