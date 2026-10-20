@@ -396,8 +396,8 @@ body.search-open{overflow:hidden}
 .search-result-tags em{padding:0}
 .search-result-tags em:not(:last-child)::after{content:"·";margin:0 7px;color:#aaa}
 @media(max-width:680px){.search-results{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.search-result{gap:7px;padding:7px}.search-thumb{aspect-ratio:1.8/1}.search-thumb .cover-device{width:56px;height:96px}.search-result-copy strong{font-size:16px;line-height:20px}.search-result-tags{gap:0}.search-result-tags em{font-size:11px;line-height:15px}.search-result-tags em:not(:last-child)::after{margin:0 5px}}
-.site-header{position:fixed;height:60px;align-items:flex-start;padding-top:10px;background:rgba(255,255,255,.74);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
-@media(max-width:760px){.site-header{height:50px;padding-top:10px}}
+.site-header{position:fixed;height:60px;align-items:center;padding-top:0;background:rgba(255,255,255,.74);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+@media(max-width:760px){.site-header{height:50px;padding-top:0}}
 .hero-kicker>.avatar{position:relative;display:block;flex:0 0 32px;width:32px;height:32px;min-width:32px;min-height:32px;padding:0;overflow:hidden;border-radius:50%;aspect-ratio:1/1;line-height:0}
 .hero-kicker>.avatar>.profile-slideshow-image{position:absolute;inset:0;display:block;width:100%;height:100%;min-width:0;min-height:0;max-width:none;max-height:none;object-fit:cover;border-radius:50%;clip-path:circle(50%)}
 .detail-case-images[hidden]{display:none!important}
