@@ -1,4 +1,4 @@
-# Hyunju Cho — Product Designer Portfolio
+# Cho Hyunju — Product Designer Portfolio
 
 A Japanese-language portfolio site built with HTML, CSS, and JavaScript. Project details are stored in `projects.js`; add each project's cover, app icon, and gallery images under `assets/projects/<project-slug>/`.
 

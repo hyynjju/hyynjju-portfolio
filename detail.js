@@ -24,7 +24,7 @@ const findGalleryImages = async (folder) => {
 };
 
 if (project && main) {
-  document.title = `${project.name} — Hyunju Cho`;
+  document.title = `${project.name} — Cho Hyunju`;
 
   const escapeHTML = (value = '') => String(value).replace(/[&<>"']/g, (char) => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
