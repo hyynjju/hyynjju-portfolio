@@ -595,3 +595,4 @@ body.search-open{overflow:hidden}
 .projects-section{padding-bottom:300px}
 .more-projects{padding-bottom:220px}
 @media(max-width:760px){.projects-section{padding-bottom:190px}.more-projects{padding-bottom:144px}}
+.phone-screen.hero-screen-placeholder{background:transparent!important}
