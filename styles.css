@@ -613,3 +613,14 @@ body.search-open{overflow:hidden}
 /* Keep search results scrollable without showing a scrollbar. */
 .search-results-wrap{scrollbar-width:none;-ms-overflow-style:none}
 .search-results-wrap::-webkit-scrollbar{display:none;width:0;height:0}
+
+/* Tighten the Alte Haas headline while keeping SF Pro tracking more open. */
+.hero h1{letter-spacing:-4px}
+@media(max-width:760px){.hero h1{letter-spacing:-2.5px}}
+@supports (-webkit-touch-callout:none){
+  .hero h1{letter-spacing:-1.5px}
+  @media(max-width:760px){.hero h1{letter-spacing:-.5px}}
+}
+
+/* Hide browser broken-image icons while project cover placeholders shimmer. */
+.image-loading>.project-cover-image,.image-loading>.more-project-cover-image{visibility:hidden}
