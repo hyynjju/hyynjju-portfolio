@@ -1,4 +1,5 @@
 import { cp, mkdir, rm } from 'node:fs/promises';
+import { build } from 'esbuild';
 
 const siteEntries = [
   'index.html', 'about.html', 'styles.css', 'projects.js', 'app.js',
@@ -11,3 +12,12 @@ await mkdir('dist', { recursive: true });
 for (const entry of siteEntries) {
   await cp(entry, `dist/${entry}`, { recursive: true });
 }
+
+await build({
+  entryPoints: ['vercel-analytics.js'],
+  bundle: true,
+  format: 'iife',
+  platform: 'browser',
+  outfile: 'dist/vercel-analytics.js',
+  define: { 'process.env.NODE_ENV': '"production"' },
+});
