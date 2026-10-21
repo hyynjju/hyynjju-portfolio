@@ -54,7 +54,8 @@ if (project && main) {
         <div class="detail-fact"><h2>Role</h2><div class="detail-chips">${roleItems.map(chip).join('')}</div></div>
         <div class="detail-fact"><h2>Work</h2><div class="detail-chips">${workItems.map(chip).join('')}</div></div>
         <div class="detail-fact"><h2>Tools</h2><div class="detail-chips">${toolItems.map(chip).join('')}</div></div>
-        <div class="detail-fact"><h2>Duration</h2><p class="detail-period">${escapeHTML(project.duration || project.period || '—')}</p></div>
+        ${project.award ? `<div class="detail-fact"><h2>Award</h2><div class="detail-award-list">${(Array.isArray(project.award) ? project.award : [{ title: project.award }]).map((award) => `<p class="detail-period">${award.date ? `<span class="detail-award-date">${escapeHTML(award.date)}</span><br>` : ''}${escapeHTML(award.title)}</p>`).join('')}</div></div>` : ''}
+        ${(project.duration || project.period) ? `<div class="detail-fact"><h2>Duration</h2><p class="detail-period">${escapeHTML(project.duration || project.period)}</p></div>` : ''}
       </div>
     </section>
 

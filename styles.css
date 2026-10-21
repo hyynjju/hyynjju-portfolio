@@ -602,3 +602,5 @@ body.search-open{overflow:hidden}
 .language .language-code{margin:0}
 .language-globe{display:block}
 .language-globe{opacity:.5}
+.detail-award-list{display:flex;flex-direction:column;gap:14px}
+.detail-award-date{color:rgba(0,0,0,.45);font-size:.9em}
