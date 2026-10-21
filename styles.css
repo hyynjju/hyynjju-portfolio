@@ -615,7 +615,7 @@ body.search-open{overflow:hidden}
 .search-results-wrap::-webkit-scrollbar{display:none;width:0;height:0}
 
 /* Tighten the Alte Haas headline while keeping SF Pro tracking more open. */
-.hero h1{letter-spacing:-2.5px}
+.hero h1{letter-spacing:-2px}
 @media(max-width:760px){.hero h1{letter-spacing:-1.5px}}
 @supports (-webkit-touch-callout:none){
   .hero h1{letter-spacing:-.75px}
