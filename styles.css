@@ -601,3 +601,4 @@ body.search-open{overflow:hidden}
 .language{display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;cursor:pointer}
 .language .language-code{margin:0}
 .language-globe{display:block}
+.language-globe{opacity:.3}
