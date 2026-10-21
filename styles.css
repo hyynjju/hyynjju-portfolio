@@ -597,3 +597,7 @@ body.search-open{overflow:hidden}
 .more-projects{padding-bottom:220px}
 @media(max-width:760px){.projects-section{padding-bottom:190px}.more-projects{padding-bottom:144px}}
 .phone-screen.hero-screen-placeholder{background:transparent!important}
+/* Language selector: Lucide globe followed by the active locale code. */
+.language{display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;cursor:pointer}
+.language .language-code{margin:0}
+.language-globe{display:block}

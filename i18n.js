@@ -1,0 +1,78 @@
+(() => {
+  const languages = ['ja', 'ko', 'en'];
+  const labels = { ja: 'JPN', ko: 'KOR', en: 'ENG' };
+  const copy = {
+    ko: {
+      homepageSubtitle: '데이터에서 문제를 찾고, 구현까지 고려하는 디자이너',
+      principles: [
+        '개발 제약과 구현 가능성을 이해하고, 디자인 의도와 구현의 균형을 고려해 UI를 설계합니다.',
+        '사용자 행동 데이터와 정량 지표를 분석해 수치 이면의 문제를 파악하고, 개선점을 구체화합니다.',
+        '제품의 설계 의도를 이해하고, 일관성을 유지하며 사용자에게 최적의 경험을 고민합니다.',
+      ],
+      about: [
+        '도쿄를 중심으로 활동하는 프로덕트 디자이너 조현주입니다.<br><br>한성대학교에서 모바일소프트웨어와 UX/UI디자인을 공부했으며, 현재 UX/UI 설계와 프론트엔드 개발을 함께하며 제품을 만들고 있습니다.',
+        '요구사항과 개발 제약을 파악한 뒤, 사용자가 이해하기 쉽고 제품의 목적에 맞는 UI를 설계합니다.<br><br>정량 데이터를 바탕으로 문제를 찾고, 프로덕트의 사양과 디자인 시스템의 일관성을 유지하면서 필요한 개선을 구체적인 화면과 구현으로 연결합니다.',
+        '포스트록, 매스록, 얼터너티브 록을 중심으로 한 일본 인디 록을 듣는 것을 좋아합니다. 취미는 베이스 연주로, Number Girl의 ‘투명소녀’를 조금 연주할 수 있습니다.<br><br>여러 장르의 유령 굿즈를 모으는 것을 좋아합니다.',
+      ],
+      projects: {
+        yomeruyo: { headline: 'Yomeruyo - 일본 생활에 특화된 일본어 학습 서비스', description: '일본에 거주하거나 일본에서 일하는 한국인을 위한 일본어 읽기 학습 서비스', summary: '일본에서 생활하는 한국인이 일상에서 마주치는 일본어 읽기를 반복해서 익힐 수 있는 학습 서비스', about: 'Yomeruyo는 일본에 거주하거나 일본에서 일하는 한국인을 위한 일본어 읽기 학습 서비스입니다.\n\n숫자, 인명, 지명, 경어처럼 일상과 업무에서 자주 접하지만 익히기 어려운 읽기에 집중해 반복 학습할 수 있도록 설계했습니다.\n\n일본 지하철 역명과 노선명, 실제 일본인 이름, 업종별 경어 표현 등 실제 일본 생활에 기반한 콘텐츠를 담았습니다.\n\n서비스 기획부터 UI/UX 설계와 프런트엔드 개발까지 맡았으며, 출시 7개월 만에 1,200명 이상이 이용했습니다.' },
+        'pay-id': { headline: 'PAY ID 앱: 상품 탐색 경험 개선', description: '팔로우 중인 여러 상점에서 원하는 상품을 더 쉽게 찾도록 돕는 검색 경험', summary: '팔로우 중인 여러 상점의 상품을 한 번에 검색하는 경험', about: 'PAY ID 인턴십 과제로 앱 내 상품 검색 경험 개선을 진행했습니다.\n\n검색 결과에 대한 사용자 불만과 구매 데이터를 살펴보고, 팔로우 중인 상점에서 원하는 상품을 더 쉽게 찾을 수 있는 UI를 제안했습니다.\n\nPAY ID 팀원 인터뷰와 구매 데이터, 검색 만족도 설문을 바탕으로 사용자가 상품을 찾을 때 겪는 문제를 분석했습니다. 그 결과 팔로우한 상점마다 같은 검색을 반복해야 하는 점을 발견했습니다.\n\n여러 상점의 상품을 한 번에 검색하고 결과를 팔로우한 상점으로 좁힐 수 있도록 설계했습니다. 사용자 조사, 문제 정의, UI 설계, 프로토타입 구현까지 5일 동안 진행했습니다.' },
+        ontime: { headline: 'OnTime - 출퇴근을 더 편리하게 하는 출발 알림 앱', description: '교통 상황을 반영한 출발 시각과 경로를 확인하는 출퇴근 앱 UI/UX 및 디자인 시스템', summary: '출퇴근 준비를 간소화하는 앱 UI와 디자인 시스템', about: '현직 엔지니어 3명과 협업해 출근 준비를 효율화하는 앱 OnTime의 UI/UX와 디자인 시스템을 설계했습니다.\n\n도착 희망 시각을 설정하면 실시간 교통 상황을 반영한 출발 시각과 경로를 확인할 수 있습니다. 매번 경로를 검색하고 출발 시각을 계산하는 번거로움을 줄이는 것을 목표로 했습니다.\n\n기존 기획서를 바탕으로 기능별 화면을 설계하고 색상, 타이포그래피, 공통 컴포넌트를 체계적으로 정리했습니다. 개발팀이 디자인 의도를 이해하고 구현에 활용할 수 있도록 컴포넌트 종류와 상태를 정의했습니다.\n\n경로 선택, 장소 검색, 시간 설정 등 각 사용 상황에 맞는 UI와 선택·입력 상태를 설계해 사용자는 쉽게 조작하고 개발자는 효율적으로 구현할 수 있도록 했습니다.' },
+        poom: { headline: 'Poom - 해외 생활의 의사결정을 돕는 커뮤니티 플랫폼', description: '해외 거주자가 신뢰할 수 있는 정보를 바탕으로 생활 관련 결정을 내리도록 돕는 커뮤니티 플랫폼', summary: '해외 생활에 필요한 정보와 경험을 나누는 커뮤니티 플랫폼', about: '해외 장기 체류자는 비자, 주거 계약, 보험, 은행 계좌 개설, 취업 등 삶에 큰 영향을 주는 결정을 짧은 기간에 연이어 내려야 합니다.\n\n하지만 정보가 SNS와 YouTube에 흩어져 있어 신뢰도와 충분성을 판단하기 어렵습니다. 그 결과 선택이 옳은지 확신하지 못한 채 결정해야 합니다.\n\n이 프로젝트는 이러한 구조적 문제를 바탕으로 안심하고 선택할 수 있는 경험을 설계하고, 의사결정 과정을 다시 구성하는 데 초점을 맞췄습니다.' },
+        mekki: { headline: 'MEKKI - 건강 데이터와 식사를 연결하는 맞춤형 푸드 브랜드', description: '건강 데이터를 바탕으로 그날의 컨디션에 맞는 식사를 제안하는 푸드 브랜드', summary: '건강 데이터를 일상의 식사 선택으로 연결하는 맞춤형 식사 경험', about: 'Mekki는 개인의 건강 데이터를 바탕으로 식사 볼을 제안하는 맞춤형 푸드 브랜드입니다.\n\n웨어러블 기기와 건강 앱에 쌓인 걸음 수, 수면, 체중 등의 데이터를 통합해 현재 컨디션과 목표에 맞는 한 끼를 제안합니다.\n\n건강에 대한 관심은 높아졌지만 정보가 넘치는 상황에서 무엇을 어떻게 먹어야 할지 판단하기 어렵다는 문제에 주목했습니다. 건강 데이터를 식사 선택으로 연결해 매번 고민하지 않아도 되는 경험을 목표로 했습니다.\n\n복잡한 영양 정보보다 직관적인 피드백과 시각화를 중심으로 신체 상태와 식사를 이해하고 선택할 수 있는 인터페이스를 설계했습니다.' },
+        yakk: { headline: 'Yakk - 언어 전환을 연습하는 AI 통역 학습 서비스', description: '한국어와 일본어를 오가며 실제 생활과 가까운 상황에서 통역을 연습하는 학습 서비스', summary: '한일 통역 상황을 바탕으로 양방향 연습을 반복하는 학습 서비스', about: 'Yakk는 한국어와 일본어를 번갈아 사용하는 상황에서 통역을 연습하도록 설계한 한일 통역 학습 서비스입니다.\n\n한국인과 일본인이 함께 대화하거나, 일본인 친구에게 한국을 소개하거나, 일본어 라이브와 콘텐츠를 즐기는 등 실제 생활에서 마주치는 상황을 연습할 수 있습니다.\n\n기존 일본어 학습은 문법과 단어 중심인 경우가 많아, 배운 언어를 실제 대화에서 빠르게 전환해 전달하는 연습이 부족하다는 점에 주목했습니다.\n\n사용자가 원하는 상황과 목적을 입력하면 AI가 개인화된 통역 스크립트를 생성합니다. 한국어와 일본어 간 양방향 통역을 텍스트와 음성 모드로 반복 연습하는 경험을 설계하고 구현했습니다.' },
+        qgenie: { headline: 'QGenie - AI 기반 쿼리 어시스턴트', description: '자연어로 데이터베이스를 검색하고 분석하는 AI 기반 SQL 생성 플랫폼', summary: '자연어로 데이터를 탐색하고 결과를 확인·수정하는 쿼리 어시스턴트', about: 'QGenie는 자연어만으로 데이터베이스를 검색하고 분석할 수 있는 AI 기반 SQL 생성 플랫폼입니다.\n\n복잡한 SQL 문법을 몰라도 자연어로 질문하면 AI가 SQL 쿼리를 생성하고 실행 결과를 제공합니다.\n\n데이터 활용의 중요성이 커지고 있지만 비전문가와 실무 담당자는 데이터베이스 구조와 관계를 이해하고 쿼리를 작성하는 데 어려움을 겪습니다. 자연어와 데이터베이스를 연결해 데이터 활용의 진입 장벽을 낮추고자 했습니다.\n\n채팅 인터페이스를 중심으로 질문, 결과 확인, 쿼리 편집과 재실행의 흐름을 구성했습니다. SQL 에디터와 결과 영역을 함께 배치해 AI의 편리함과 사용자의 제어권을 모두 고려했습니다.' },
+        intone: { headline: 'Intone - 일본어 악센트·억양 학습', description: '일본어 음성을 분석하고 시각화해 한국어 화자의 악센트와 억양 학습을 돕는 서비스', summary: '음성 특징을 시각화해 일본어 발음을 연습하는 학습 경험', about: 'Intone은 한국어 화자가 일본어 악센트와 억양을 자연스럽게 익히도록 돕는 음성 학습 서비스입니다.\n\n일본어 영상이나 음성 파일을 업로드하면 음높이 패턴을 분석해 악센트, 억양, 장음 등 발음 특징을 시각화합니다.\n\n많은 일본어 학습자가 문법과 어휘를 익힌 뒤에도 자연스러운 발음과 말하기를 어려워한다는 점에 주목했습니다. 교재만으로 익히기 어려운 피치 악센트와 억양을 음성 데이터로 객관적으로 확인하고 반복 연습할 수 있도록 했습니다.\n\n직관적인 피드백과 시각화를 바탕으로 일본어 특유의 리듬과 억양을 이해하기 쉬운 인터페이스를 설계했습니다.' },
+      },
+    },
+    en: {
+      homepageSubtitle: 'A designer who finds problems in data and considers implementation',
+      principles: [
+        'A designer who understands development constraints and feasibility, balancing design intent with implementation',
+        'A designer who analyzes user behavior and quantitative metrics to uncover the issues behind the numbers and define improvements',
+        'A designer who understands product intent and creates coherent experiences that work for users',
+      ],
+      about: [
+        'I’m Cho Hyunju, a product designer based in Tokyo.<br>I studied computer engineering and UX/UI design at Hansung University in Seoul, South Korea. Today, I work across UI/UX design and frontend development to shape digital products.',
+        'I design clear interfaces that serve a product’s purpose while accounting for requirements and development constraints.<br>I use quantitative data to identify problems, maintain consistency with specifications and design systems, and turn improvements into concrete screens and implementation.',
+        'Since my student days, I’ve listened to Japanese indie rock, especially post-rock, math rock, and alternative rock. I play bass, and can play a little of Number Girl’s “透明少女.”<br>I also collect ghost-themed goods across all kinds of genres.',
+      ],
+      projects: {
+        yomeruyo: { headline: 'Yomeruyo - Japanese reading practice for everyday life in Japan', description: 'A Japanese reading practice service for Koreans living or working in Japan.', summary: 'A service that helps Koreans in Japan repeatedly practice readings they encounter in daily life.', about: 'Yomeruyo is a Japanese reading practice service for Koreans living or working in Japan.\n\nIt focuses on readings that are common in daily life and at work but difficult to learn, including numbers, names, place names, and honorific language. The experience is designed for repeated practice.\n\nContent is grounded in life in Japan, from subway stations and train lines to real Japanese names and industry-specific honorific expressions.\n\nI led the service from launch planning through UI/UX design and frontend development. More than 1,200 people have used it within seven months of release.' },
+        'pay-id': { headline: 'PAY ID app: Improving product discovery', description: 'A search experience that makes it easier to find products across multiple followed shops.', summary: 'A proposal for searching products across all followed shops at once.', about: 'As an internship assignment at PAY ID, I worked on improving in-app product search.\n\nI looked at user dissatisfaction with search results and purchase data, then proposed a UI that makes it easier to find products from followed shops.\n\nInterviews with PAY ID team members, purchase data, and a search satisfaction survey helped identify a repeated task: users had to run the same search separately for each shop they followed.\n\nI designed a way to search across multiple followed shops and filter results to those shops. The work, from user research and problem framing to UI design and prototyping, was completed in five days.' },
+        ontime: { headline: 'OnTime - A departure alert app for easier commutes', description: 'UI/UX and a design system for a commute app that shows departure times and routes based on traffic.', summary: 'An app UI and design system that simplifies getting ready for a commute.', about: 'I collaborated with three practicing engineers to design the UI/UX and design system for OnTime, an app that streamlines getting ready for a commute.\n\nUsers set their desired arrival time and see a departure time and route based on real-time traffic. The goal is to reduce the effort of searching routes and calculating when to leave each day.\n\nUsing the existing product brief, I designed feature screens and organized color, typography, and shared components into a system. I defined component types and states so the development team could understand the design intent and use it in implementation.\n\nI designed flows for route selection, place search, and time settings, including selection and input states, to make the product clear for users and practical to build.' },
+        poom: { headline: 'Poom - A community platform for decisions about life abroad', description: 'A community that helps people living abroad make life decisions with more reliable information.', summary: 'A community platform for sharing information and experience needed for life abroad.', about: 'People living abroad for an extended period often need to make major decisions in quick succession, from visas and housing to insurance, bank accounts, and work.\n\nInformation is scattered across social media and YouTube, making it difficult to judge its reliability or completeness. People are left making decisions without knowing whether they are right.\n\nThis project addresses that structural problem by designing an experience that supports confident choices and rethinking the decision-making process itself.' },
+        mekki: { headline: 'MEKKI - A personalized food brand connecting health data and meals', description: 'A food brand that recommends meals suited to a person’s daily condition based on health data.', summary: 'A personalized experience that connects health data with everyday meal choices.', about: 'Mekki is a personalized food brand that recommends meals based on individual health data.\n\nIt brings together steps, sleep, weight, and other data from wearables and health apps to recommend a meal suited to a person’s current condition and goals.\n\nDespite growing interest in health, an abundance of information makes it hard to decide what to eat. The project connects health data to meal choices so users can make decisions without starting from scratch each time.\n\nThe interface uses direct feedback and visualization instead of complex nutrition information, helping users understand their condition and choose a meal.' },
+        yakk: { headline: 'Yakk - AI interpreting practice for switching between languages', description: 'A learning service for practicing interpretation in realistic situations while switching between Korean and Japanese.', summary: 'A learning service for repeated, two-way practice in Korean–Japanese interpreting scenarios.', about: 'Yakk is a Korean–Japanese interpretation learning service designed for situations where people switch between the two languages.\n\nIt lets learners practice scenarios from everyday life, such as conversations between Korean and Japanese speakers, introducing Korea to a Japanese friend, or enjoying Japanese-language live events and content.\n\nTraditional language learning often focuses on grammar and vocabulary, leaving little practice in quickly switching languages during real conversations.\n\nUsers enter a situation and goal, and AI generates a personalized interpreting script. I designed and implemented repeated two-way practice between Korean and Japanese in text and voice modes.' },
+        qgenie: { headline: 'QGenie - AI-powered query assistant', description: 'An AI-powered SQL platform for searching and analyzing databases with natural language.', summary: 'A query assistant for exploring data in natural language and reviewing or editing results.', about: 'QGenie is an AI-powered SQL platform that lets people search and analyze databases using natural language.\n\nUsers can ask a question without knowing complex SQL syntax; AI generates a query and returns the results.\n\nAs data becomes more important, non-specialists and business teams still face the challenge of understanding database structures and writing queries. The project lowers that barrier by connecting natural language to databases.\n\nThe chat-centered flow covers asking questions, reviewing results, editing queries, and running them again. Pairing an SQL editor with a results area balances AI convenience with user control.' },
+        intone: { headline: 'Intone - Japanese accent and intonation practice', description: 'A service that analyzes and visualizes Japanese audio to help Korean speakers learn accent and intonation.', summary: 'A learning experience for practicing Japanese pronunciation through audio visualization.', about: 'Intone is an audio learning service that helps Korean speakers learn Japanese accent and intonation naturally.\n\nWhen users upload Japanese video or audio, the service analyzes pitch patterns and visualizes pronunciation features such as accent, intonation, and long vowels.\n\nMany Japanese learners find natural pronunciation and speaking difficult even after learning grammar and vocabulary. Intone makes pitch accent and intonation easier to inspect objectively and practice repeatedly through audio analysis.\n\nThe interface uses clear feedback and visualization to make the rhythm and inflection of Japanese easier to understand.' },
+      },
+    },
+  };
+
+  const globe = '<svg class="lucide-icon language-globe" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>';
+  let current = localStorage.getItem('portfolio-language');
+  if (!languages.includes(current)) current = 'ja';
+
+  document.querySelectorAll('.language').forEach((button) => {
+    button.innerHTML = `${globe}<span class="language-code">${labels[current]}</span>`;
+    button.setAttribute('aria-label', `Language: ${current === 'ja' ? 'Japanese' : current === 'ko' ? 'Korean' : 'English'}`);
+    button.title = '日本語 → 한국어 → English';
+    button.addEventListener('click', () => {
+      const next = languages[(languages.indexOf(current) + 1) % languages.length];
+      localStorage.setItem('portfolio-language', next);
+      location.reload();
+    });
+  });
+  document.documentElement.lang = current;
+  if (current === 'ja') return;
+
+  const translation = copy[current];
+  document.querySelectorAll('.hero-subtitle').forEach((el) => { el.textContent = translation.homepageSubtitle; });
+  document.querySelectorAll('.principle > p').forEach((el, i) => { if (translation.principles[i]) el.textContent = translation.principles[i]; });
+  document.querySelectorAll('.about-bio > p').forEach((el, i) => { if (translation.about[i]) el.innerHTML = translation.about[i]; });
+  (window.projects || []).forEach((project) => {
+    const localized = translation.projects[project.slug];
+    if (localized) Object.assign(project, localized);
+  });
+})();
