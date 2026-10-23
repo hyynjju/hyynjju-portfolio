@@ -621,6 +621,9 @@ body.search-open{overflow:hidden}
 /* Tighten the Alte Haas headline while keeping SF Pro tracking more open. */
 .hero h1{letter-spacing:-2px}
 @media(max-width:760px){.hero h1{letter-spacing:-1.5px}}
+.hero h1 .hero-title-char{display:inline-block;opacity:0;filter:blur(12px);transform:translateY(.12em);animation:heroTitleBlurReveal .65s cubic-bezier(.2,.75,.25,1) forwards;animation-delay:calc(var(--char-index)*26ms);will-change:opacity,filter,transform}
+@keyframes heroTitleBlurReveal{to{opacity:1;filter:blur(0);transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.hero h1 .hero-title-char{opacity:1;filter:none;transform:none;animation:none;will-change:auto}}
 @supports (-webkit-touch-callout:none){
   .hero h1{letter-spacing:-.75px}
   @media(max-width:760px){.hero h1{letter-spacing:0}}

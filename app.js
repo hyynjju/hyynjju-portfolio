@@ -1,4 +1,29 @@
 window.addEventListener('DOMContentLoaded', () => {
+  const heroTitle = document.querySelector('.hero h1');
+  if (heroTitle && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const accessibleTitle = heroTitle.textContent.replace(/\s+/g, ' ').trim();
+    const titleFragment = document.createDocumentFragment();
+    let characterIndex = 0;
+
+    heroTitle.setAttribute('aria-label', accessibleTitle);
+    heroTitle.childNodes.forEach(node => {
+      if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'BR') {
+        titleFragment.append(node.cloneNode());
+        return;
+      }
+      if (node.nodeType !== Node.TEXT_NODE) return;
+      for (const character of Array.from(node.textContent)) {
+        const letter = document.createElement('span');
+        letter.className = 'hero-title-char';
+        letter.setAttribute('aria-hidden', 'true');
+        letter.style.setProperty('--char-index', characterIndex++);
+        letter.textContent = character === ' ' ? '\u00a0' : character;
+        titleFragment.append(letter);
+      }
+    });
+    heroTitle.replaceChildren(titleFragment);
+  }
+
   const typewriter = document.querySelector('[data-code-typewriter]');
   if (typewriter) {
     const source = 'VStack(spacing: 12) {\n      Text("Overview")\n      ProgressView(value: completion)';
