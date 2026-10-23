@@ -126,6 +126,10 @@
 .swift-code{margin:0;overflow:hidden;color:#d7dce5;font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace;font-size:10px;font-weight:400;line-height:1.45;white-space:pre}
 .swift-code code{display:block;font:inherit}
 .swift-keyword{color:#c792ea}.swift-type{color:#82c8e8}.swift-number{color:#f0bd74}.swift-string{color:#a8d7a0}
+.swift-typewriter{white-space:pre}
+.swift-live-caret{display:inline-block;vertical-align:-.12em;width:1px;height:1em;margin-left:1px;background:#d7dce5;animation:swiftCaretBlink .8s steps(2,end) infinite}
+@keyframes swiftCaretBlink{to{visibility:hidden}}
+@media(prefers-reduced-motion:reduce){.swift-live-caret{display:none}}
 .code-caret{position:absolute;left:31px;bottom:11px;width:2px;height:10px;margin:0;background:#80c8e8}
 .bar-one{background:linear-gradient(to top,#d4d8de,#e4e7eb)}
 .bar-two{background:linear-gradient(to top,#cbd0d7,#e0e4e9)}
