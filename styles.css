@@ -621,9 +621,20 @@ body.search-open{overflow:hidden}
 /* Tighten the Alte Haas headline while keeping SF Pro tracking more open. */
 .hero h1{letter-spacing:-2px}
 @media(max-width:760px){.hero h1{letter-spacing:-1.5px}}
-.hero h1 .hero-title-char{display:inline-block;opacity:0;filter:blur(12px);transform:translateY(.12em);animation:heroTitleBlurReveal .65s cubic-bezier(.2,.75,.25,1) forwards;animation-delay:calc(var(--char-index)*26ms);will-change:opacity,filter,transform}
+.hero h1 .hero-title-char{display:inline-block;opacity:0;filter:blur(12px);transform:translateY(.12em);animation:heroTitleBlurReveal .48s cubic-bezier(.2,.75,.25,1) forwards;animation-delay:calc(var(--char-index)*14ms);will-change:opacity,filter,transform}
 @keyframes heroTitleBlurReveal{to{opacity:1;filter:blur(0);transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.hero h1 .hero-title-char{opacity:1;filter:none;transform:none;animation:none;will-change:auto}}
+/* Soft, flattened oval glow behind the three principle illustrations. */
+.art-glow{left:52%;top:15%;width:min(152%,630px);height:333px;transform-origin:top left;transform:rotate(33.65deg);border-radius:50%;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(255,255,255,.28) 0%,rgba(255,255,255,.42) 58%,rgba(255,255,255,.82) 100%);filter:blur(16px);opacity:.7}
+@media(max-width:760px){.hero h1{width:calc(100vw - 32px);max-width:calc(100vw - 32px);white-space:nowrap;font-size:clamp(28px,8.8vw,54px);letter-spacing:-1px}}
+/* Hero sequence: reveal each visual as a whole, then let the headline resolve per character. */
+.hero-kicker,.phone-stage,.hero-subtitle{opacity:0;filter:blur(16px);animation:heroComponentBlurReveal .56s cubic-bezier(.2,.75,.25,1) forwards;will-change:opacity,filter}
+.hero-kicker{animation-delay:0ms}
+.phone-stage{animation-delay:100ms}
+.hero h1 .hero-title-char{animation-delay:calc(260ms + var(--char-index)*14ms)}
+.hero-subtitle{animation-delay:750ms;animation-duration:.7s}
+@keyframes heroComponentBlurReveal{to{opacity:1;filter:blur(0)}}
+@media(prefers-reduced-motion:reduce){.hero-kicker,.phone-stage,.hero-subtitle{opacity:1;filter:none;animation:none;will-change:auto}}
 @supports (-webkit-touch-callout:none){
   .hero h1{letter-spacing:-.75px}
   @media(max-width:760px){.hero h1{letter-spacing:0}}
