@@ -1,6 +1,6 @@
 # Notes
 
-記事はプロジェクトごとのMarkdownファイルで管理します。Webサイトへ接続する際は、各記事のFront Matterから一覧情報を読み込み、本文をMarkdownとして表示する想定です。
+各記事の日本語原稿はプロジェクトごとのMarkdownファイルで管理しています。公開ページの一覧・翻訳・本文は `../notes-data.js` にまとめ、`notes-page.js` が言語設定に合わせて表示します。記事を追加・更新するときは、Markdown原稿と表示データの両方を更新してください。
 
 ## ファイル構成
 
@@ -13,7 +13,7 @@ notes/
 └── portfolio-renewal/README.md
 ```
 
-各記事の冒頭には `title`、`date`、`project`、`summary`、`cover`、`tags` を記載します。記事内で使う画像は各記事フォルダの `images/` に置き、本文から相対パスで参照します。
+各記事の冒頭には `title`、`date`、`project`、`summary`、`cover`、`tags` を記載します。日本語・韓国語・英語の公開文面は `notes-data.js` の各記事 `content` 内に同じ構成で記載します。記事内で使う画像は各記事フォルダの `images/` に置き、本文から相対パスで参照します。
 
 ```md
 ![画面イメージ](./images/01.png)

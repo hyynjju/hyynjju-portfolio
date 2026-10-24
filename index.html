@@ -39,7 +39,7 @@
     <header class="site-header">
       <a class="wordmark" href="/" aria-label="Cho Hyunju home"><img class="wordmark-logo" src="/assets/site/logo.svg" alt="" onload="this.parentElement.classList.add('has-logo')" onerror="this.remove()"><span class="wordmark-fallback">ju</span></a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="mailto:hyynjju@gmail.com">Contact</a><a href="/about.html">About</a>
+        <a href="mailto:hyynjju@gmail.com">Contact</a><a href="/notes/">Notes</a><a href="/about.html">About</a>
         <button class="language" type="button" aria-label="Language: Japanese"><svg class="lucide-icon language-globe" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span class="language-code">JPN</span></button>
         <button class="search-pill" type="button" aria-haspopup="dialog" aria-label="Search"><svg class="lucide-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Search</button>
       </nav>
@@ -85,6 +85,13 @@
         <div class="project-grid" id="project-grid"></div>
         <div class="project-hover-cursor" aria-hidden="true"><div class="project-hover-cursor-card"></div></div>
       </section>
+      <section class="notes-preview-section content-width" aria-labelledby="notes-preview-title">
+        <div class="notes-preview-heading">
+          <h2 id="notes-preview-title">Notes</h2>
+          <a href="/notes/" class="notes-read-all">View all <svg class="notes-read-all-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        </div>
+        <div class="notes-preview-grid" id="home-notes-grid"></div>
+      </section>
     </main>
     <footer class="portfolio-footer">
       <div class="footer-columns" aria-hidden="true">
@@ -101,6 +108,8 @@
       </div>
     </footer>
     <script src="/i18n.js"></script>
+    <script src="/notes-data.js"></script>
+    <script src="/notes-page.js"></script>
     <script src="/app.js"></script>
     <script src="/hero-scan.js"></script>
     <script src="/project-hover.js"></script>

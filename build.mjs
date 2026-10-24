@@ -3,8 +3,8 @@ import { build } from 'esbuild';
 
 const siteEntries = [
   'index.html', 'about.html', 'styles.css', 'projects.js', 'app.js',
-  'detail.js', 'i18n.js', 'hero-scan.js', 'project-hover.js', 'search-ui.js',
-  'profile-slideshow.js', 'assets', 'projects',
+  'detail.js', 'i18n.js', 'notes-data.js', 'notes-page.js', 'hero-scan.js', 'project-hover.js', 'search-ui.js',
+  'profile-slideshow.js', 'assets', 'projects', 'notes',
 ];
 
 await rm('dist', { recursive: true, force: true });

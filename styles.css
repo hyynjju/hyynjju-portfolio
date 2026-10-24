@@ -627,6 +627,101 @@ body.search-open{overflow:hidden}
 /* Soft, flattened oval glow behind the three principle illustrations. */
 .art-glow{left:52%;top:15%;width:min(152%,630px);height:333px;transform-origin:top left;transform:rotate(33.65deg);border-radius:50%;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(255,255,255,.28) 0%,rgba(255,255,255,.42) 58%,rgba(255,255,255,.82) 100%);filter:blur(16px);opacity:.7}
 @media(max-width:760px){.hero h1{width:calc(100vw - 32px);max-width:calc(100vw - 32px);white-space:nowrap;font-size:clamp(28px,8.8vw,54px);letter-spacing:-1px}}
+@media(max-width:760px){.nav-links a:first-child{display:inline}.nav-links a[href^="mailto:"]{display:none}}
+.notes-empty{min-height:100vh}
+.projects-section{padding-bottom:120px}
+.notes-preview-section{padding:0 0 160px}
+.notes-preview-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}
+.notes-preview-heading h2{margin:0;color:#111;font:700 30px/40px 'Alte Haas Grotesk',-apple-system,'Inter',sans-serif}
+.notes-read-all{display:flex;align-items:center;gap:10px;color:rgba(0,0,0,.5);font:400 16px/24px 'Alte Haas Grotesk',-apple-system,'Inter',sans-serif;transition:color .18s ease}
+.notes-read-all:hover{color:#111}
+.notes-read-all-icon{display:block;flex:none;color:#9ca3af;opacity:1;stroke-width:1.75}
+.notes-preview-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1fr);align-items:start;gap:40px}
+.note-featured,.note-row{min-width:0}
+.note-featured-image{position:relative;height:320px;overflow:hidden;border-radius:12px;background:#e8e8e8}
+.note-featured-image>img,.note-row>img{display:block;width:100%;height:100%;object-fit:cover}
+.note-tags{position:absolute;top:16px;left:16px;display:flex;gap:10px}
+.note-tags span{padding:8px 11px;border-radius:6px;background:rgba(80,80,80,.48);backdrop-filter:blur(24px);color:rgba(255,255,255,.86);font:700 13px/18px 'Alte Haas Grotesk',-apple-system,'Inter',sans-serif}
+.note-copy{display:flex;flex-direction:column;gap:5px;margin-top:20px}
+.note-copy time,.note-row-meta time{color:rgba(0,0,0,.48);font:400 14px/21px 'SF Pro',-apple-system,BlinkMacSystemFont,sans-serif}
+.note-copy h3{margin:0;color:#111;font:400 27px/36px 'SF Pro',-apple-system,BlinkMacSystemFont,sans-serif}
+.note-copy p{margin:0;color:rgba(0,0,0,.55);font:400 15px/24px 'SF Pro',-apple-system,BlinkMacSystemFont,sans-serif}
+.notes-side-list{display:flex;flex-direction:column;justify-content:center;gap:16px}
+.note-row{display:flex;align-items:center;gap:24px;padding-bottom:16px;border-bottom:1px solid rgba(0,0,0,.1)}
+.note-row:last-child{padding-bottom:0;border-bottom:0}
+.note-row>img{flex:0 0 140px;width:140px;height:140px;border-radius:12px;background:#e8e8e8}
+.note-row-copy{flex:1 1 auto;width:100%;min-width:0;display:flex;flex-direction:column;gap:10px}
+.note-row-meta{display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px}
+.note-row-meta>.note-row-tags{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0;padding:0;border-radius:0;background:transparent;color:inherit;font:inherit}
+.note-row-tags>span{padding:7px 9px;border-radius:6px;background:rgba(0,0,0,.05);color:rgba(0,0,0,.62);font:700 12px/16px 'Alte Haas Grotesk',-apple-system,'Inter',sans-serif}
+.note-row-meta time{white-space:nowrap}
+.note-row h3{margin:0;color:#111;font:400 22px/30px 'SF Pro',-apple-system,BlinkMacSystemFont,sans-serif}
+@media(max-width:760px){.projects-section{padding-bottom:90px}.notes-preview-section{padding-bottom:110px}.notes-preview-heading{margin-bottom:22px}.notes-preview-heading h2{font-size:26px;line-height:34px}.notes-read-all{font-size:14px}.notes-preview-grid{grid-template-columns:1fr;gap:30px}.note-featured-image{height:auto;aspect-ratio:1.5}.note-copy{margin-top:15px}.note-copy h3{font-size:23px;line-height:31px}.note-copy p{font-size:14px;line-height:22px}.notes-side-list{gap:13px}.note-row{gap:16px;padding-bottom:13px}.note-row>img{flex-basis:92px;width:92px;height:92px;border-radius:10px}.note-row-copy{gap:7px}.note-row-meta{gap:6px}.note-row-meta>span{padding:5px 7px;font-size:10px;line-height:14px}.note-row-meta time{font-size:11px;line-height:16px;margin-left:0}.note-row h3{font-size:16px;line-height:23px}}
+/* Notes listing and article pages */
+.note-featured,.note-row,.note-list-card,.notes-featured-copy,.notes-featured-image{color:inherit;text-decoration:none}
+.note-featured,.note-row{display:block}
+.note-featured-image,.note-list-card .note-image-frame,.notes-featured-image,.note-article-cover{display:block;position:relative;overflow:hidden;background:#e8e8e8}
+.note-image-frame.image-loading>img{visibility:hidden}
+.note-featured-image>img,.note-image-frame>img{transition:transform .55s cubic-bezier(.2,.7,.25,1)}
+.note-featured:hover .note-featured-image>img,.note-row:hover .note-image-frame>img,.note-list-card:hover .note-image-frame>img,.notes-featured-image:hover>img{transform:scale(1.045)}
+.note-featured:focus-visible,.note-row:focus-visible,.note-list-card:focus-visible,.notes-featured-copy:focus-visible,.notes-featured-image:focus-visible{outline:2px solid #111;outline-offset:4px;border-radius:6px}
+.note-row{display:flex}
+.note-row .note-image-frame{position:relative;display:block;flex:0 0 140px;width:140px;height:140px;min-width:140px;min-height:140px;overflow:hidden;border-radius:12px;contain:paint}
+.note-row .note-image-frame img{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:cover;transform-origin:center;}
+.note-featured .note-copy{display:flex}
+.note-featured .note-tags{pointer-events:none}
+.note-copy h3,.note-row h3{font-weight:600}
+.note-copy h3+p{margin-top:5px}
+.notes-page{padding-top:90px;padding-bottom:150px}
+.notes-page-heading{margin-bottom:44px}
+.notes-page-heading h1{margin:0;font:600 42px/1.2 'Alte Haas Grotesk',-apple-system,'Inter',sans-serif;letter-spacing:-.02em}
+.notes-list-featured{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1fr);align-items:center;gap:48px;margin-bottom:64px}
+.notes-featured-copy{display:flex;flex-direction:column;align-items:flex-start;gap:0}
+.notes-featured-copy>.note-tags{position:static;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.notes-featured-copy>.note-tags span,.note-article-tags span{padding:8px 12px;border-radius:6px;background:rgba(0,0,0,.05);color:rgba(0,0,0,.62);font:700 14px/20px 'Alte Haas Grotesk',-apple-system,'Inter',sans-serif}
+.notes-featured-copy>time,.note-article-header>time{color:rgba(0,0,0,.48);font:400 14px/21px 'SF Pro',-apple-system,BlinkMacSystemFont,sans-serif}
+.notes-featured-copy>time{margin-bottom:5px}
+.notes-featured-copy h1{margin:0 0 15px;font:600 clamp(30px,3.1vw,44px)/1.3 'SF Pro',-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:-.015em}
+.notes-featured-copy p{margin:0 0 15px;color:rgba(0,0,0,.55);font:400 16px/1.75 'SF Pro',-apple-system,BlinkMacSystemFont,sans-serif}
+.notes-read-more{display:inline-flex;align-items:center;gap:20px;margin-top:9px;padding:15px 22px;border-radius:999px;background:#111;color:#fff;font:400 15px/20px 'Alte Haas Grotesk',-apple-system,'Inter',sans-serif;transition:background .2s ease,transform .2s ease}
+.notes-read-more-icon{display:block;flex:none;stroke-width:1.75;transition:transform .2s ease}.notes-featured-copy:hover .notes-read-more{background:#333}.notes-featured-copy:hover .notes-read-more-icon{transform:translateX(3px)}
+.notes-featured-image{width:100%;aspect-ratio:1.84;border-radius:12px}
+.notes-featured-image img{width:100%;height:100%;object-fit:cover}
+.notes-list-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 24px}
+.note-list-card{display:block;min-width:0}
+.note-list-card .note-image-frame{width:100%;aspect-ratio:1.55;border-radius:12px}
+.note-list-card .note-image-frame img{width:100%;height:100%;object-fit:cover}
+.note-list-card-copy{padding-top:17px}
+.note-list-card-meta{display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:8px}
+.note-list-card-tags{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.note-list-card-tags>span{padding:6px 9px;border-radius:6px;background:rgba(0,0,0,.05);color:rgba(0,0,0,.62);font:700 12px/16px 'Alte Haas Grotesk',-apple-system,'Inter',sans-serif}
+.note-list-card-meta time{color:rgba(0,0,0,.48);font:400 12px/18px 'SF Pro',-apple-system,BlinkMacSystemFont,sans-serif}
+.note-list-card h2{margin:0 0 6px;font:600 21px/1.4 'SF Pro',-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:-.01em}
+.note-list-card p{margin:0;color:rgba(0,0,0,.55);font:400 14px/1.7 'SF Pro',-apple-system,BlinkMacSystemFont,sans-serif}
+.note-list-card:hover h2{color:rgba(0,0,0,.68)}
+.note-article-page{max-width:none;padding-top:90px;padding-bottom:140px}
+.note-back-link{display:inline-block;color:rgba(0,0,0,.55);font:400 14px/22px 'SF Pro',-apple-system,BlinkMacSystemFont,sans-serif;text-decoration:none;transition:color .2s ease}
+.note-back-link:hover{color:#111}
+.note-article-header{width:100%;max-width:none;margin:50px auto 38px;text-align:center}
+.note-article-tags{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.note-article-header>time{display:block;margin-bottom:16px}
+.note-article-header h1{margin:0 0 14px;font:600 clamp(34px,5vw,54px)/1.25 'SF Pro',-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:-.02em}
+.note-article-header p{margin:0;color:rgba(0,0,0,.56);font:400 17px/1.75 'SF Pro',-apple-system,BlinkMacSystemFont,sans-serif}
+.note-article-cover{width:min(900px,100%);aspect-ratio:1.8;border-radius:14px;margin:0 auto 60px}
+.note-article-cover img{width:100%;height:100%;object-fit:cover}
+.note-article-body{width:100%;max-width:900px;margin:0 auto}
+.note-article-body section+section{margin-top:42px}
+.note-article-body h2{margin:0 0 14px;font:600 24px/1.4 'SF Pro',-apple-system,BlinkMacSystemFont,sans-serif}
+.note-article-body p{margin:0;color:rgba(0,0,0,.72);font:400 16px/1.9 'SF Pro',-apple-system,BlinkMacSystemFont,sans-serif}
+.note-article-body p+p{margin-top:14px}
+.note-back-bottom{display:block;width:min(900px,100%);margin:55px auto 0}
+@media(max-width:760px){
+ .notes-page{padding-top:54px;padding-bottom:100px}.notes-page-heading{margin-bottom:28px}.notes-page-heading h1{font-size:32px}
+ .notes-list-featured{grid-template-columns:1fr;gap:23px;margin-bottom:40px}.notes-featured-copy{gap:0}.notes-featured-copy>.note-tags{margin-bottom:18px}.notes-featured-copy h1{font-size:30px;line-height:1.3}.notes-featured-copy p{font-size:14px}.notes-featured-image{grid-row:1;aspect-ratio:1.5}.notes-read-more{padding:12px 18px;font-size:14px}
+ .notes-list-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 14px}.note-list-card .note-image-frame{aspect-ratio:1.35;border-radius:9px}.note-list-card-copy{padding-top:12px}.note-list-card-meta{gap:9px;margin-bottom:6px}.note-list-card-tags{gap:5px}.note-list-card-tags>span{padding:4px 6px;font-size:10px;line-height:14px}.note-list-card-meta time{width:100%;margin:0;font-size:10px}.note-list-card h2{font-size:16px;line-height:1.4}.note-list-card p{font-size:12px;line-height:1.6}
+ .note-row .note-image-frame{flex-basis:92px;width:92px;height:92px;min-width:92px;min-height:92px;border-radius:10px}.note-row-meta>.note-row-tags{gap:4px}.note-row-tags>span{padding:5px 7px;font-size:10px;line-height:14px}
+ .note-article-page{padding-top:48px;padding-bottom:100px}.note-article-header{margin:36px auto 26px}.note-article-header h1{font-size:32px}.note-article-header p{font-size:15px}.note-article-cover{aspect-ratio:1.35;border-radius:10px;margin-bottom:38px}.note-article-body h2{font-size:21px}.note-article-body p{font-size:15px;line-height:1.85}.note-article-body section+section{margin-top:34px}
+}
 /* Hero sequence: reveal each visual as a whole, then let the headline resolve per character. */
 .hero-kicker,.phone-stage,.hero-subtitle{opacity:0;filter:blur(16px);animation:heroComponentBlurReveal .56s cubic-bezier(.2,.75,.25,1) forwards;will-change:opacity,filter}
 .hero-kicker{animation-delay:0ms}
