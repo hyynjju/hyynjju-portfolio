@@ -30,6 +30,14 @@
       <h2>${headingText(text.title)}</h2><p>${escapeHtml(text.summary)}</p></div>
     </a>`;
   };
+  const moreNoteCardMarkup = (note) => {
+    const text = note.content[locale];
+    return `<a class="more-project-card more-note-card note-list-card" href="/notes/${note.slug}/">
+      ${image(note, text.title)}
+      <div class="note-list-card-copy"><div class="note-list-card-meta"><div class="note-list-card-tags">${tags(note)}</div><time datetime="${note.date}">${dateText(note.date)}</time></div>
+      <h2>${headingText(text.title)}</h2></div>
+    </a>`;
+  };
   const home = document.querySelector('#home-notes-grid');
   if (home && notes.length) {
     const featured = notes[0];
@@ -66,11 +74,13 @@
     const note = notes.find((item) => item.slug === slug);
     if (!note) { article.innerHTML = '<p>Note not found.</p>'; return; }
     const text = note.content[locale];
+    const moreNotes = secondaryNotes(note);
     article.innerHTML = `<a class="note-back-link" href="/notes/">← ${copy.back}</a>
       <header class="note-article-header"><div class="note-article-tags">${tags(note)}</div><time datetime="${note.date}">${dateText(note.date)}</time><h1>${headingText(text.title)}</h1><p>${escapeHtml(text.summary)}</p></header>
       <div class="note-article-cover note-image-frame image-loading"><img src="${escapeHtml(note.cover)}" alt="${escapeHtml(text.title)}" loading="lazy" decoding="async" onload="this.parentElement.classList.remove('image-loading')" onerror="window.imageFormatFallback(this)"></div>
       <div class="note-article-body">${text.sections.map(([heading, paragraphs], index) => `${note.articleImages?.[index] ? `<figure class="note-article-inline-image note-image-frame image-loading"><img src="${escapeHtml(note.articleImages[index])}" alt="${escapeHtml(heading)}" loading="lazy" decoding="async" onload="this.parentElement.classList.remove('image-loading')" onerror="this.parentElement.remove()"></figure>` : ''}<section class="note-article-section${note.articleImages?.[index] ? ' note-article-section-after-image' : ''}"><h2>${escapeHtml(heading)}</h2>${paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>`).join('')}</div>
-      <a class="note-back-link note-back-bottom" href="/notes/">← ${copy.back}</a>`;
+      <a class="note-back-link note-back-bottom" href="/notes/">← ${copy.back}</a>
+      <section class="more-projects more-notes"><h2>More Notes</h2><div class="more-project-grid more-notes-grid">${moreNotes.map(moreNoteCardMarkup).join('')}</div></section>`;
     document.title = `${text.title} — Notes — Cho Hyunju`;
     document.querySelector('meta[name="description"]')?.setAttribute('content', text.summary);
   }
