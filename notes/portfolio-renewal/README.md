@@ -3,7 +3,7 @@ title: ポートフォリオサイトをリニューアルしました
 date: 2026-10-21
 project: Portfolio Renewal
 summary: プロジェクトを探しやすく、自分の強みや考え方も伝わるサイトを、企画から実装まで4日間で制作しました。
-cover: /assets/site/og-image.jpg
+cover: /notes/portfolio-renewal/images/cover.jpg
 tags:
   - ポートフォリオ
   - Codex

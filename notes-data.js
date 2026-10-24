@@ -166,23 +166,36 @@
       }
     },
     {
-      slug: 'portfolio-renewal', cover: '/assets/site/og-image.jpg', date: '2026-10-21',
+      slug: 'portfolio-renewal', cover: '/notes/portfolio-renewal/images/cover.jpg', date: '2026-10-21',
+      articleImages: {
+        0: '/notes/portfolio-renewal/images/01.jpg',
+        1: '/notes/portfolio-renewal/images/02.jpg',
+        2: '/notes/portfolio-renewal/images/03.jpg',
+        3: '/notes/portfolio-renewal/images/04.jpg',
+        4: '/notes/portfolio-renewal/images/05.jpg',
+      },
       tags: { ja: ['Portfolio', 'Codex', 'Static Site'], ko: ['Portfolio', 'Codex', 'Static Site'], en: ['Portfolio', 'Codex', 'Static Site'] },
       content: {
         ja: { title: 'ポートフォリオサイトをリニューアルしました', summary: '作品を探しやすく、自分の強みや考え方も伝わるサイトを、企画から実装まで4日間で制作しました。', sections: [
           ['制作の背景と方針', ['以前のサイトはプロジェクトを一覧で把握しにくく、情報の更新にも手間がかかっていました。また、自分の強みや人となりを十分に伝えられていないことも課題でした。', '作品をひと目で確認でき、検索・フィルターで探せること、自分の考え方や強みも伝わることを目指しました。日本語・韓国語・英語に対応し、プロジェクト情報をデータで管理する静的サイトとして構成しました。']],
           ['制作と開発', ['Figmaでの企画・デザインに2日、Codex Workを使った開発に2日をかけました。各プロジェクトに個別URLを設け、公開にはVercelを利用しています。', 'デザインしたレイアウトや余白が実装後に異なって見えたり、意図しない要素が追加されたりしたため、変更箇所と維持する要素を具体的に伝え、画面を確認しながら調整しました。']],
-          ['制作を通じて', ['約1年前に作ったサイトを改めて制作し、Codexではコードを直接編集せず自然言語で開発を進められるようになった変化を感じました。一方、クレジットの消費が早く、意図を的確に伝える効率的なプロンプトが重要だと実感しました。', '制作期間：10月18日〜21日（4日間）']]
+          ['プロジェクトを探す・管理する', ['メインページではプロジェクトを一覧でき、カテゴリーフィルターで表示を絞り込めます。検索パネルではキーワードやタグから探せるほか、サムネイルとタイトルを見ながら結果を確認できます。各プロジェクトには個別の詳細ページとURLを用意し、詳細ページの下部からは横スクロールで別のプロジェクトも見られるようにしました。', 'プロジェクト情報はデータとしてまとめ、画像はプロジェクトごとのフォルダでカバー、アプリアイコン、ギャラリーに分けて管理しています。共通のページ構成を使うことで、掲載内容を追加・更新しやすくしました。']],
+          ['Notesと多言語対応', ['制作の過程や考えたことを残せるNotesも追加しました。メインページには記事を一部掲載し、一覧ページからすべての記事を探せます。記事ごとに詳細ページとURLを設け、カバー画像や本文中の画像も掲載できる構成です。', '言語を切り替えると、プロジェクトやNotesのタイトル・説明・本文も日本語、韓国語、英語に切り替わります。ページの構成を共通にしながら、言語ごとのコンテンツを管理できるようにしました。']],
+          ['制作を通じて', ['約1年前に作ったサイトを改めて制作し、Codexではコードを直接編集せず自然言語で開発を進められるようになった変化を感じました。一方、クレジットの消費が早く、意図を的確に伝える効率的なプロンプトが重要だと実感しました。']]
         ] },
         ko: { title: '포트폴리오 사이트를 새로 만들었습니다', summary: '프로젝트를 쉽게 살펴보고 저의 강점과 생각도 전할 수 있는 사이트를 기획부터 구현까지 4일 동안 제작했습니다.', sections: [
           ['제작 배경과 방향', ['기존 사이트는 프로젝트를 한눈에 파악하기 어렵고 정보를 수정하기도 번거로웠습니다. 저의 강점과 어떤 사람인지 충분히 전달되지 않는 점도 과제였습니다.', '작품을 빠르게 살펴보고 검색과 필터로 찾아볼 수 있으며, 저의 생각과 강점도 전하는 사이트를 목표로 했습니다. 한·일·영을 지원하고 프로젝트 정보를 데이터로 관리하는 정적 사이트로 구성했습니다.']],
           ['제작과 개발', ['Figma로 기획과 디자인에 2일, Codex Work로 개발에 2일을 사용했습니다. 각 프로젝트에 개별 URL을 부여하고 Vercel로 배포했습니다.', '디자인한 레이아웃과 간격이 구현 후 다르게 보이거나 의도하지 않은 요소가 추가되는 일이 있었습니다. 수정할 부분과 유지할 요소를 구체적으로 전달하고 화면을 확인하며 조정했습니다.']],
-          ['제작을 통해 배운 점', ['약 1년 전에 만든 사이트를 다시 제작하며 Codex를 통해 코드를 직접 편집하지 않고 자연어로 개발을 진행할 수 있게 된 변화를 느꼈습니다. 한편 크레딧이 빠르게 소모되어 의도를 정확히 전달하는 효율적인 프롬프트가 중요하다는 점도 체감했습니다.', '제작 기간: 10월 18일~21일 (4일)']]
+          ['프로젝트 탐색과 관리', ['메인 페이지에서는 프로젝트를 한눈에 보고, 카테고리 필터로 원하는 작업만 모아볼 수 있습니다. 검색 패널에서는 키워드와 태그로 프로젝트를 찾고, 썸네일과 제목을 확인하며 결과를 살펴볼 수 있습니다. 프로젝트마다 상세 페이지와 고유 URL을 제공하며, 상세 페이지 아래에서는 가로 스크롤로 다른 프로젝트도 둘러볼 수 있습니다.', '프로젝트 정보는 데이터로 모아 관리하고, 이미지는 프로젝트별 폴더에서 커버·앱 아이콘·갤러리로 나눴습니다. 공통 페이지 구조를 사용해 새 프로젝트를 추가하거나 기존 정보를 수정하기 쉽게 했습니다.']],
+          ['Notes와 다국어 지원', ['작업 과정과 고민을 기록하는 Notes도 추가했습니다. 메인 페이지에서 일부 글을 소개하고, 전체 목록 페이지에서 모든 글을 찾아볼 수 있습니다. 각 글에는 상세 페이지와 고유 URL이 있으며, 커버 이미지와 본문 이미지를 함께 보여줍니다.', '언어를 바꾸면 프로젝트와 Notes의 제목, 설명, 본문도 일본어·한국어·영어로 전환됩니다. 페이지 구조는 유지하면서 언어별 콘텐츠를 관리할 수 있도록 구성했습니다.']],
+          ['제작을 통해 배운 점', ['약 1년 전에 만든 사이트를 다시 제작하며 Codex를 통해 코드를 직접 편집하지 않고 자연어로 개발을 진행할 수 있게 된 변화를 느꼈습니다. 한편 크레딧이 빠르게 소모되어 의도를 정확히 전달하는 효율적인 프롬프트가 중요하다는 점도 체감했습니다.']]
         ] },
         en: { title: 'Renewing my portfolio website', summary: 'A four-day project to make my work easier to browse and communicate my strengths and approach.', sections: [
           ['Background and direction', ['My previous portfolio made it difficult to scan projects and cumbersome to update content. It also did not communicate enough about my strengths or how I approach design.', 'I aimed to make projects easy to browse and filter, while giving visitors a clearer sense of my work and perspective. The site supports Japanese, Korean, and English, and uses a static structure with project information managed as data.']],
           ['Making and building', ['I spent two days on planning and design in Figma, then two days developing with Codex Work. Each project has its own URL, and the site is deployed on Vercel.', 'The implemented spacing sometimes differed from the Figma design, and unintended elements occasionally appeared. I addressed this by describing what to change and what to preserve more precisely, then reviewing and refining the page.']],
-          ['What I learned', ['Rebuilding a portfolio I first made about a year earlier showed me how Codex now makes it possible to develop through natural-language instructions without editing code directly. Credits can run down quickly, so I also learned to value prompts that communicate intent clearly and efficiently.', 'Production period: October 18–21 (four days)']]
+          ['Finding and managing projects', ['The homepage presents projects in a browsable list, with category filters to narrow what is shown. The search panel supports keyword and tag searches, and displays thumbnails and titles alongside the results. Each project has a dedicated detail page and URL; a horizontal More Project section lets visitors continue exploring from there.', 'Project details are managed as data. Images are organized in project-specific folders for covers, app icons, and galleries. Reusing a shared page structure makes it easier to add a project or update its content.']],
+          ['Notes and languages', ['I added Notes to document the process and thinking behind my work. The homepage features selected posts, while a separate index lists all articles. Each post has its own detail page and URL, with a cover image and images within the article.', 'Switching languages also changes project and Notes titles, descriptions, and article text between Japanese, Korean, and English. The shared page structure keeps the experience consistent while allowing the content to be managed in each language.']],
+          ['What I learned', ['Rebuilding a portfolio I first made about a year earlier showed me how Codex now makes it possible to develop through natural-language instructions without editing code directly. Credits can run down quickly, so I also learned to value prompts that communicate intent clearly and efficiently.']]
         ] }
       }
     }

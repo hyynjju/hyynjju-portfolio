@@ -19,6 +19,7 @@
   };
   const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
   const headingText = (value) => escapeHtml(value).replace(/([\u3040-\u30ff\u3400-\u9fff々〆〇ヶヵー]+)/g, '<span class="note-japanese-glyph">$1</span>');
+  const secondaryNotes = (featured) => notes.filter((note) => note !== featured).sort((a, b) => Number(b.slug === 'portfolio-renewal') - Number(a.slug === 'portfolio-renewal'));
   const tags = (note) => note.tags[locale].map((tag) => `<span>${escapeHtml(tag)}</span>`).join('');
   const image = (note, alt, className = '') => `<span class="note-image-frame image-loading ${className}"><img src="${escapeHtml(note.cover)}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async" onload="this.parentElement.classList.remove('image-loading')" onerror="window.imageFormatFallback(this)"></span>`;
   const cardMarkup = (note) => {
@@ -31,7 +32,8 @@
   };
   const home = document.querySelector('#home-notes-grid');
   if (home && notes.length) {
-    const [featured, ...rest] = notes;
+    const featured = notes[0];
+    const rest = secondaryNotes(featured);
     const main = featured.content[locale];
     home.innerHTML = `<a class="note-featured" href="/notes/${featured.slug}/">
       <span class="note-featured-image note-image-frame image-loading"><img src="${escapeHtml(featured.cover)}" alt="${escapeHtml(main.title)}" loading="lazy" decoding="async" onload="this.parentElement.classList.remove('image-loading')" onerror="window.imageFormatFallback(this)"><span class="note-tags">${tags(featured)}</span></span>
@@ -48,7 +50,8 @@
 
   const list = document.querySelector('#notes-list');
   if (list && notes.length) {
-    const [featured, ...rest] = notes;
+    const featured = notes[0];
+    const rest = secondaryNotes(featured);
     const text = featured.content[locale];
     list.innerHTML = `<div class="notes-list-featured"><a class="notes-featured-copy" href="/notes/${featured.slug}/">
       <span class="note-tags">${tags(featured)}</span><time datetime="${featured.date}">${dateText(featured.date)}</time>
