@@ -1,7 +1,13 @@
 (() => {
   const notes = [
     {
-      slug: 'pay-id', cover: '/assets/projects/pay-id/cover/cover.jpg', date: '2026-10-21',
+      slug: 'pay-id', cover: '/notes/pay-id/images/cover.JPG', date: '2026-10-21',
+      articleImages: {
+        1: '/notes/pay-id/images/01.png',
+        2: '/notes/pay-id/images/02.png',
+        3: '/notes/pay-id/images/03.png',
+        5: '/notes/pay-id/images/04.png',
+      },
       tags: { ja: ['UX Research', 'Data Analysis', 'UI Design'], ko: ['UX Research', 'Data Analysis', 'UI Design'], en: ['UX Research', 'Data Analysis', 'UI Design'] },
       content: {
         ko: { title: '관심 있던 서비스의 팀에서, 검색 경험을 개선하기까지', summary: 'ReDesigner의 스카우트로 시작한 PAY ID 인턴십. 사용자 데이터로 문제를 다시 정의하고 검색 경험을 제안한 과정을 기록했다.', sections: [

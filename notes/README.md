@@ -8,9 +8,13 @@
 notes/
 ├── README.md
 ├── pay-id/README.md
+│   └── images/
 ├── medeasy/README.md
+│   └── images/
 ├── ontime/README.md
+│   └── images/
 └── portfolio-renewal/README.md
+    └── images/
 ```
 
 各記事の冒頭には `title`、`date`、`project`、`summary`、`cover`、`tags` を記載します。日本語・韓国語・英語の公開文面は `notes-data.js` の各記事 `content` 内に同じ構成で記載します。記事内で使う画像は各記事フォルダの `images/` に置いてください。
@@ -19,4 +23,4 @@ notes/
 ![画面イメージ](./images/01.png)
 ```
 
-カバー画像には、既存のプロジェクト画像を指定しています。記事用の画像を追加する場合は `images/` フォルダを作成してください。
+記事画像は各記事の `images/` に置き、`cover.jpg` または `cover.png` をカバー、`01.jpg` / `01.png`、`02.jpg` / `02.png` のように本文画像を連番で管理します。JPG・PNGのどちらも使用できます。

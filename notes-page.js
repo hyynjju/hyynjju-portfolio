@@ -61,7 +61,7 @@
     article.innerHTML = `<a class="note-back-link" href="/notes/">← ${copy.back}</a>
       <header class="note-article-header"><div class="note-article-tags">${tags(note)}</div><time datetime="${note.date}">${dateText(note.date)}</time><h1>${escapeHtml(text.title)}</h1><p>${escapeHtml(text.summary)}</p></header>
       <div class="note-article-cover note-image-frame image-loading"><img src="${escapeHtml(note.cover)}" alt="${escapeHtml(text.title)}" loading="lazy" decoding="async" onload="this.parentElement.classList.remove('image-loading')" onerror="window.imageFormatFallback(this)"></div>
-      <div class="note-article-body">${text.sections.map(([heading, paragraphs]) => `<section><h2>${escapeHtml(heading)}</h2>${paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>`).join('')}</div>
+      <div class="note-article-body">${text.sections.map(([heading, paragraphs], index) => `${note.articleImages?.[index] ? `<figure class="note-article-inline-image note-image-frame image-loading"><img src="${escapeHtml(note.articleImages[index])}" alt="${escapeHtml(heading)}" loading="lazy" decoding="async" onload="this.parentElement.classList.remove('image-loading')" onerror="this.parentElement.remove()"></figure>` : ''}<section class="note-article-section${note.articleImages?.[index] ? ' note-article-section-after-image' : ''}"><h2>${escapeHtml(heading)}</h2>${paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('')}</section>`).join('')}</div>
       <a class="note-back-link note-back-bottom" href="/notes/">← ${copy.back}</a>`;
     document.title = `${text.title} — Notes — Cho Hyunju`;
     document.querySelector('meta[name="description"]')?.setAttribute('content', text.summary);
