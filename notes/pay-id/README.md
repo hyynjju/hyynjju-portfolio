@@ -1,6 +1,6 @@
 ---
 title: 일본 BASE 주식회사에서 보낸 한 달 — PAY ID 프로덕트 디자인 인턴십
-date: 2026-10-21
+date: 2026-10-16
 project: pay-id
 summary: 일본어로 일한 첫 경험이자 실제 프로덕트 팀의 일원으로 사용자 데이터를 바탕으로 문제를 정의하고 검색 경험을 개선한 한 달을 기록했다.
 cover: /notes/pay-id/images/cover.JPG

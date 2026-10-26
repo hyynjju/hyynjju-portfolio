@@ -1,7 +1,7 @@
 (() => {
   const notes = [
     {
-      slug: 'pay-id', cover: '/notes/pay-id/images/cover.JPG', date: '2026-10-21',
+      slug: 'pay-id', cover: '/notes/pay-id/images/cover.JPG', date: '2026-10-16',
       articleImages: {
         6: '/notes/pay-id/images/01.png',
         7: '/notes/pay-id/images/02.png',
@@ -46,7 +46,7 @@
       }
     },
     {
-      slug: 'medeasy', cover: '/notes/medeasy/images/cover.jpg', date: '2026-10-21',
+      slug: 'medeasy', cover: '/notes/medeasy/images/cover.jpg', date: '2025-12-17',
       articleImages: {
         1: '/notes/medeasy/images/01.jpg',
         2: '/notes/medeasy/images/02.jpg',
@@ -95,7 +95,7 @@
       }
     },
     {
-      slug: 'ontime', cover: '/notes/ontime/images/cover.jpg', date: '2026-10-21',
+      slug: 'ontime', cover: '/notes/ontime/images/cover.jpg', date: '2025-10-20',
       articleImages: {
         1: '/notes/ontime/images/01.png',
         2: '/notes/ontime/images/02.png',
@@ -132,7 +132,7 @@
       }
     },
     {
-      slug: 'portfolio-renewal', cover: '/notes/portfolio-renewal/images/cover.jpg', date: '2026-10-21',
+      slug: 'portfolio-renewal', cover: '/notes/portfolio-renewal/images/cover.jpg', date: '2026-10-23',
       articleImages: {
         1: '/notes/portfolio-renewal/images/01.jpg',
         2: '/notes/portfolio-renewal/images/02.jpg',

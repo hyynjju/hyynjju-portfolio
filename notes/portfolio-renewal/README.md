@@ -1,6 +1,6 @@
 ---
 title: 포트폴리오 웹사이트 리뉴얼 — Figma와 Codex로 4일 만에 완성하기
-date: 2026-10-21
+date: 2026-10-23
 project: portfolio-renewal
 summary: 프로젝트 탐색과 콘텐츠 관리를 개선하고, Figma와 Codex Work로 기획부터 구현까지 4일간 진행한 리뉴얼 과정을 기록했다.
 cover: /notes/portfolio-renewal/images/cover.jpg

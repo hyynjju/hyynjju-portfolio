@@ -1,6 +1,6 @@
 ---
 title: MedEasy 회고 — 디자인부터 개발, 그리고 출시 준비까지
-date: 2026-10-21
+date: 2025-12-17
 project: medeasy
 summary: 팀의 유일한 디자이너이자 프론트엔드 개발자로 약 1년간 참여한 AI 복약 관리 프로젝트. 구현과 출시 준비를 거치며 배운 점을 정리했다.
 cover: /assets/projects/medeasy/cover/cover.png

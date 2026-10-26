@@ -1,6 +1,6 @@
 ---
 title: 현직 개발자 3명과 함께한 OnTime UI/UX 디자인 회고
-date: 2026-10-21
+date: 2025-10-20
 project: OnTime
 summary: 대학 커뮤니티에서 만난 현직 개발자 3명과 협업하며 UI/UX 설계와 디자인 시스템 구축을 진행했다.
 cover: /assets/projects/ontime/cover/cover.png
